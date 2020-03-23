@@ -8,14 +8,6 @@ if [ -f "$dev_mode" ]; then
     set -x
 fi
 
-source /root/NeXt-Server-Buster/configs/versions.cfg
-source /root/NeXt-Server-Buster/configs/userconfig.cfg
-
-for file in $(find . -type f -name "*.sh"); 
-do 
-    source $file; 
-done
-
 install_start=`date +%s`
 
 progress_gauge "0" "Checking your system..."

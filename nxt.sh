@@ -9,15 +9,11 @@ if [ $(dpkg-query -l | grep dialog | wc -l) -ne 3 ]; then
     apt -qq install dialog >/dev/null 2>&1
 fi
 
-source /root/NeXt-Server-Buster/configs/versions.cfg
-source /root/NeXt-Server-Buster/configs/userconfig.cfg
+source /root/NeXt-Server-Buster/configs/sources.cfg
 
 GIT_LOCAL_FILES_HEAD=$(git rev-parse --short HEAD)
 GIT_LOCAL_FILES_HEAD_LAST_COMMIT=$(git log -1 --date=short --pretty=format:%cd)
-for file in $(find . -type f -name "*.sh"); 
-do 
-    source $file; 
-done
+
 set_logs
 prerequisites
 
