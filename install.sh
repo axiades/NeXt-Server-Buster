@@ -8,6 +8,11 @@ if [ -f "$dev_mode" ]; then
     set -x
 fi
 
+for file in $(find . -type f -name "*.sh"); 
+do 
+    source $file; 
+done
+
 install_start=`date +%s`
 
 progress_gauge "0" "Checking your system..."
