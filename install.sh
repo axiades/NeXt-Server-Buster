@@ -1,6 +1,5 @@
 #!/bin/bash
 #Please check the license provided with the script!
-#-------------------------------------------------------------------------------------------------------------
 
 dev_mode=/root/NeXt-Server-Buster/dev.conf
 if [ -f "$dev_mode" ]; then

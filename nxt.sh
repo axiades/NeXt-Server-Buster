@@ -1,6 +1,5 @@
 #!/bin/bash
 #Please check the license provided with the script!
-#-------------------------------------------------------------------------------------------------------------
 
 clear
 echo "NeXt Server"
@@ -15,11 +14,12 @@ exec 2> >(tee -a /root/NeXt-Server-Buster/logs/error.log)
 
 GIT_LOCAL_FILES_HEAD=$(git rev-parse --short HEAD)
 GIT_LOCAL_FILES_HEAD_LAST_COMMIT=$(git log -1 --date=short --pretty=format:%cd)
-source /root/NeXt-Server-Buster/configs/versions.cfg
-source /root/NeXt-Server-Buster/configs/userconfig.cfg
-source /root/NeXt-Server-Buster/script/functions.sh
-source /root/NeXt-Server-Buster/script/logs.sh; set_logs
-source /root/NeXt-Server-Buster/script/prerequisites.sh; prerequisites
+for file in $(find . -type f -name "*.sh"); 
+do 
+    source $file; 
+done
+set_logs
+prerequisites
 
 HEIGHT=40
 WIDTH=80

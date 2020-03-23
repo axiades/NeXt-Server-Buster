@@ -1,7 +1,6 @@
 #!/bin/bash
 #Please check the license provided with the script!
 # thx to https://gist.github.com/bgallagh3r
-#-------------------------------------------------------------------------------------------------------------
 
 deinstall_nextcloud() {
 

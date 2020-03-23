@@ -1,6 +1,5 @@
 #!/bin/bash
 #Please check the license provided with the script!
-#-------------------------------------------------------------------------------------------------------------
 
 show_open_ports() {
 
