@@ -9,8 +9,8 @@ if [ $(dpkg-query -l | grep dialog | wc -l) -ne 3 ]; then
     apt -qq install dialog >/dev/null 2>&1
 fi
 
-exec > >(tee -a /root/NeXt-Server-Buster/logs/main.log)
-exec 2> >(tee -a /root/NeXt-Server-Buster/logs/error.log)
+source /root/NeXt-Server-Buster/configs/versions.cfg
+source /root/NeXt-Server-Buster/configs/userconfig.cfg
 
 GIT_LOCAL_FILES_HEAD=$(git rev-parse --short HEAD)
 GIT_LOCAL_FILES_HEAD_LAST_COMMIT=$(git log -1 --date=short --pretty=format:%cd)
