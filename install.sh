@@ -8,9 +8,12 @@ if [ -f "$dev_mode" ]; then
     set -x
 fi
 
+source /root/NeXt-Server-Buster/configs/sources.cfg
+
 install_start=`date +%s`
 
 progress_gauge "0" "Checking your system..."
+prerequisites
 set_logs
 setipaddrvars
 check_system
