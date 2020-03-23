@@ -62,7 +62,7 @@ fi
 
 3)
 if [[ ${NXT_IS_INSTALLED} == '1' ]] || [[ ${NXT_IS_INSTALLED_MAILSERVER} == '1' ]]; then
-    source /root/NeXt-Server-Buster/updates/all-services-update.sh; update_all_services
+    update_all_services
 else
     echo "You have to install the NeXt Server to run the services update!"
     continue_to_menu
@@ -71,13 +71,13 @@ fi
 
 4)
 dialog_info "Updating NeXt Server Script"
-source /root/NeXt-Server-Buster/update_script.sh; update_script
+update_script
 bash nxt.sh
 ;;
 
 5)
 if [[ ${NXT_IS_INSTALLED} == '1' ]] || [[ ${NXT_IS_INSTALLED_MAILSERVER} == '1' ]]; then
-    source /root/NeXt-Server-Buster/menus/services_menu.sh; menu_options_services
+    menu_options_services
 else
     echo "You have to install the NeXt Server to run the services options!"
     continue_to_menu
@@ -86,7 +86,7 @@ fi
 
 6)
 if [[ ${NXT_IS_INSTALLED} == '1' ]] || [[ ${NXT_IS_INSTALLED_MAILSERVER} == '1' ]]; then
-    source /root/NeXt-Server-Buster/menus/addons_menu.sh; menu_options_addons
+    menu_options_addons
 else
     echo "You have to install the NeXt Server to install addons!"
     continue_to_menu
@@ -96,12 +96,12 @@ fi
 7)
 if [[ ${NXT_IS_INSTALLED} == '1' ]] || [[ ${NXT_IS_INSTALLED_MAILSERVER} == '1' ]]; then
     if [[ ${NXT_IS_INSTALLED} == '1' ]] && [[ ${NXT_IS_INSTALLED_MAILSERVER} == '0' ]]; then
-        source /root/NeXt-Server-Buster/script/lets_encrypt.sh; update_nginx_cert
+        update_nginx_cert
         echo "Updated your Let's Encrypt Certificate!"
     fi
     if [[ ${NXT_IS_INSTALLED} == '1' ]] && [[ ${NXT_IS_INSTALLED_MAILSERVER} == '1' ]]; then
-        source /root/NeXt-Server-Buster/script/lets_encrypt.sh; update_nginx_cert
-        source /root/NeXt-Server-Buster/script/lets_encrypt.sh; update_mailserver_cert
+        update_nginx_cert
+        update_mailserver_cert
         echo "Updated your Let's Encrypt Certificate!"
     fi
 else
