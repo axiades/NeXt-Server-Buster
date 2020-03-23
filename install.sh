@@ -8,18 +8,14 @@ if [ -f "$dev_mode" ]; then
     set -x
 fi
 
-source /root/NeXt-Server-Buster/configs/versions.cfg
-source /root/NeXt-Server-Buster/configs/userconfig.cfg
-
 install_start=`date +%s`
-source /root/NeXt-Server-Buster/script/functions.sh
 
 progress_gauge "0" "Checking your system..."
-source /root/NeXt-Server-Buster/script/logs.sh; set_logs
-source /root/NeXt-Server-Buster/script/functions.sh; setipaddrvars
-source /root/NeXt-Server-Buster/script/checksystem.sh; check_system
+set_logs
+setipaddrvars
+check_system
 
-source /root/NeXt-Server-Buster/confighelper.sh; confighelper_userconfig
+confighelper_userconfig
 
 mkdir /root/NeXt-Server-Buster/sources
 progress_gauge "0" "Installing System..."

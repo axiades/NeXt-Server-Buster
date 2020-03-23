@@ -52,7 +52,7 @@ case $CHOICE in
 1)
 if [[ ${NXT_IS_INSTALLED} == '1' ]] || [[ ${NXT_IS_INSTALLED_MAILSERVER} == '1' ]]; then
     echo "The NeXt-Server Script is already installed!"
-    source /root/NeXt-Server-Buster/script/functions.sh; continue_to_menu
+    continue_to_menu
 else
     bash install.sh
 fi
