@@ -5,6 +5,8 @@ install_nextcloud() {
 
 trap error_exit ERR
 
+source /root/NeXt-Server-Buster/configs/sources.cfg
+
 install_packages "unzip"
 
 MYSQL_ROOT_PASS=$(grep -Pom 1 "(?<=^MYSQL_ROOT_PASS: ).*$" /root/NeXt-Server-Buster/login_information.txt)
@@ -52,5 +54,5 @@ echo "$NEXTCLOUD_PATH_NAME" >> /root/NeXt-Server-Buster/configs/blocked_paths.co
 
 dialog_msg "Please save the shown login information on next page"
 cat /root/NeXt-Server-Buster/nextcloud_login_data.txt
-source /root/NeXt-Server-Buster/script/functions.sh; continue_or_exit
+continue_or_exit
 }

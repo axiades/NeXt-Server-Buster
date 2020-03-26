@@ -5,7 +5,7 @@ update_openssh() {
 
 trap error_exit ERR
 
-source /root/NeXt-Server-Buster/configs/versions.cfg
+source /root/NeXt-Server-Buster/configs/sources.cfg
 
 LOCAL_OPENSSH_VERSION=$(ssh -V 2>&1 | awk '/OpenSSH/ {print $(NF-6)}')
 OPENSSH_VERSION="OpenSSH_${OPENSSH_VERSION}"

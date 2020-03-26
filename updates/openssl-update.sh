@@ -5,7 +5,7 @@ update_openssl() {
 
 trap error_exit ERR
 
-source /root/NeXt-Server-Buster/configs/versions.cfg
+source /root/NeXt-Server-Buster/configs/sources.cfg
 
 #-4 only working for beta releases -> stable releases -3!
 LOCAL_OPENSSL_VERSION_STRING=$(openssl version | awk '/OpenSSL/ {print $(NF-3)}')

@@ -3,7 +3,7 @@
 
 menu_options_openssh() {
 
-source /root/NeXt-Server-Buster/script/functions.sh
+source /root/NeXt-Server-Buster/configs/sources.cfg
 
 HEIGHT=40
 WIDTH=80
@@ -37,10 +37,10 @@ NEW_OPENSSH_USER=$(dialog --clear \
                           $HEIGHT $WIDTH \
                           3>&1 1>&2 2>&3 3>&- \
                           )
-source /root/NeXt-Server-Buster/script/openssh_options.sh; add_openssh_user
+add_openssh_user
 dialog_msg "Finished adding Openssh User"
 continue_or_exit
-source /root/NeXt-Server-Buster/menus/openssh_menu.sh; menu_options_openssh
+menu_options_openssh
 ;;
 
 2)
@@ -85,12 +85,12 @@ fi
 done
 dialog_msg "Changed SSH Port to $NEW_SSH_PORT"
 continue_or_exit
-source /root/NeXt-Server-Buster/menus/openssh_menu.sh; menu_options_openssh
+menu_options_openssh
 ;;
 
 3)
 dialog_info "Creating new Openssh key"
-source /root/NeXt-Server-Buster/script/openssh_options.sh; create_new_openssh_key
+create_new_openssh_key
 dialog_msg "Finished creating new ssh key"
 echo
 echo
@@ -103,11 +103,11 @@ echo
 echo "Your new SSH Key"
 cat /root/NeXt-Server-Buster/ssh_privatekey.txt
 continue_or_exit
-source /root/NeXt-Server-Buster/menus/openssh_menu.sh; menu_options_openssh
+menu_options_openssh
 ;;
 
 4)
-source /root/NeXt-Server-Buster/menus/services_menu.sh; menu_options_services
+menu_options_services
 ;;
 
 5)

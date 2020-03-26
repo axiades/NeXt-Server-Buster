@@ -5,10 +5,10 @@ update_all_services() {
 
 trap error_exit ERR
 
-source /root/NeXt-Server-Buster/configs/userconfig.cfg
+source /root/NeXt-Server-Buster/configs/sources.cfg
 
 #updating script code base before updating the server!
-source /root/NeXt-Server-Buster/update_script.sh; update_script
+update_script
 
 if [[ ${NXT_IS_INSTALLED} == '1' ]] || [[ ${NXT_IS_INSTALLED_MAILSERVER} == '1' ]]; then
   echo "0" | dialog --gauge "Updating package lists..." 10 70 0
@@ -21,21 +21,20 @@ if [[ ${NXT_IS_INSTALLED} == '1' ]] || [[ ${NXT_IS_INSTALLED_MAILSERVER} == '1' 
   apt -y dist-upgrade >/dev/null 2>&1
 
   echo "12" | dialog --gauge "Updating fail2ban..." 10 70 0
-  source /root/NeXt-Server-Buster/updates/fail2ban-update.sh; update_fail2ban
+  update_fail2ban
 
   echo "15" | dialog --gauge "Updating firewall..." 10 70 0
   #source /root/NeXt-Server-Buster/updates/firewall-update.sh; update_firewall
 
   echo "30" | dialog --gauge "Updating Openssl..." 10 70 0
-  source /root/NeXt-Server-Buster/updates/openssl-update.sh; update_openssl
+  update_openssl
 
   echo "60" | dialog --gauge "Updating Nginx..." 10 70 0
-  source /root/NeXt-Server-Buster/updates/nginx-tools.sh; nginx_update_menu
+  nginx_update_menu
 
   if [[ ${NXT_IS_INSTALLED_MAILSERVER} = "1" ]]; then
     echo "70" | dialog --gauge "Patching rspamd..." 10 70 0
-    source /root/NeXt-Server-Buster/updates/patches/rspamd-dkim-key-fix.sh; patch_rspamd_dkim
-
+    patch_rspamd_dkim
     echo "Here will be updates for the mailserver later"
   fi
 

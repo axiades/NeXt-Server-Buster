@@ -10,7 +10,8 @@ HEIGHT=40
 WIDTH=80
 
 # --- MYDOMAIN ---
-source /root/NeXt-Server-Buster/script/functions.sh; get_domain
+source /root/NeXt-Server-Buster/configs/sources.cfg
+get_domain
 CHECK_DOMAIN_LENGTH=`echo -n ${DETECTED_DOMAIN} | wc -m`
 
 if [[ $CHECK_DOMAIN_LENGTH > 1 ]]; then
@@ -96,7 +97,7 @@ case $CHOICE in
     ;;
 esac
 
-source /root/NeXt-Server-Buster/script/functions.sh; setipaddrvars
+setipaddrvars
 if [[ ${FQDNIP} != ${IPADR} ]]; then
     echo "${MYDOMAIN} (${FQDNIP}) does not resolve to the IP address of your server (${IPADR})"
     exit

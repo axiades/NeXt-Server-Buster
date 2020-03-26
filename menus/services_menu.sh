@@ -3,9 +3,8 @@
 
 menu_options_services() {
 
-source /root/NeXt-Server-Buster/configs/versions.cfg
-source /root/NeXt-Server-Buster/script/functions.sh
-source /root/NeXt-Server-Buster/script/logs.sh; set_logs
+source /root/NeXt-Server-Buster/configs/sources.cfg
+set_logs
 
 HEIGHT=40
 WIDTH=80
@@ -34,15 +33,15 @@ clear
 case $CHOICE in
 
 1)
-source /root/NeXt-Server-Buster/menus/mailserver_menu.sh; menu_options_mailserver
+menu_options_mailserver
 ;;
 
 2)
-source /root/NeXt-Server-Buster/menus/openssh_menu.sh; menu_options_openssh
+menu_options_openssh
 ;;
 
 3)
-source /root/NeXt-Server-Buster/menus/firewall_menu.sh; menu_options_firewall
+menu_options_firewall
 ;;
 
 4)

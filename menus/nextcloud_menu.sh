@@ -3,8 +3,8 @@
 
 menu_options_nextcloud() {
 
-source /root/NeXt-Server-Buster/configs/userconfig.cfg
-source /root/NeXt-Server-Buster/script/functions.sh; get_domain
+source /root/NeXt-Server-Buster/configs/sources.cfg
+get_domain
 
 HEIGHT=40
 WIDTH=80

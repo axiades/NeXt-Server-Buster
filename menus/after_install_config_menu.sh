@@ -3,7 +3,7 @@
 
 menu_options_after_install() {
 
-source /root/NeXt-Server-Buster/script/functions.sh
+source /root/NeXt-Server-Buster/configs/sources.cfg
 
 HEIGHT=40
 WIDTH=80
@@ -32,19 +32,19 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
 1)
-  source /root/NeXt-Server-Buster/script/configuration.sh; start_after_install && continue_to_menu
+  start_after_install && continue_to_menu
 ;;
 
 2)
-  source /root/NeXt-Server-Buster/script/openssh_options.sh; show_ssh_key && continue_to_menu
+  show_ssh_key && continue_to_menu
 ;;
 
 3)
-  source /root/NeXt-Server-Buster/script/functions.sh; show_login_information && continue_to_menu
+  show_login_information && continue_to_menu
 ;;
 
 4)
-  source /root/NeXt-Server-Buster/script/openssh_options.sh; create_private_key && continue_to_menu
+  create_private_key && continue_to_menu
 ;;
 
 5)

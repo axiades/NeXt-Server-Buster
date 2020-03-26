@@ -3,7 +3,7 @@
 
 menu_options_mailserver() {
 
-source /root/NeXt-Server-Buster/script/functions.sh
+source /root/NeXt-Server-Buster/configs/sources.cfg
 
 trap error_exit ERR
 
@@ -39,7 +39,7 @@ case $CHOICE in
     cd /etc/managevmail/
     ./managevmail.py list
     continue_or_exit
-    source /root/NeXt-Server-Buster/menus/mailserver_menu.sh; menu_options_mailserver
+    menu_options_mailserver
 ;;
 
 2)
@@ -52,7 +52,7 @@ CREATE_EMAIL_ADDRESS=$(dialog --clear \
 cd /etc/managevmail/
 ./managevmail.py add $CREATE_EMAIL_ADDRESS
 continue_or_exit
-source /root/NeXt-Server-Buster/menus/mailserver_menu.sh; menu_options_mailserver
+menu_options_mailserver
 ;;
 
 3)
@@ -65,7 +65,7 @@ CHANGE_EMAIL_ADDRESS=$(dialog --clear \
 cd /etc/managevmail/
 ./managevmail.py change $CHANGE_EMAIL_ADDRESS
 continue_or_exit
-source /root/NeXt-Server-Buster/menus/mailserver_menu.sh; menu_options_mailserver
+menu_options_mailserver
 ;;
 
 4)
@@ -78,7 +78,7 @@ CHANGE_EMAIL_ADDRESS_PASSWORD=$(dialog --clear \
 cd /etc/managevmail/
 ./managevmail.py pw $CHANGE_EMAIL_ADDRESS_PASSWORD
 continue_or_exit
-source /root/NeXt-Server-Buster/menus/mailserver_menu.sh; menu_options_mailserver
+menu_options_mailserver
 ;;
 
 5)
@@ -91,11 +91,11 @@ DELETE_EMAIL_ADDRESS=$(dialog --clear \
 cd /etc/managevmail/
 ./managevmail.py delete $DELETE_EMAIL_ADDRESS
 continue_or_exit
-source /root/NeXt-Server-Buster/menus/mailserver_menu.sh; menu_options_mailserver
+menu_options_mailserver
 ;;
 
 6)
-source /root/NeXt-Server-Buster/menus/services_menu.sh; menu_options_services
+menu_options_services
 ;;
 
 7)

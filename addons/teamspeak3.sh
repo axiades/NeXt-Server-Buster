@@ -3,6 +3,8 @@
 
 install_teamspeak3() {
 
+source /root/NeXt-Server-Buster/configs/sources.cfg
+
 install_packages "sudo"
 
 adduser ts3user --gecos "" --no-create-home --disabled-password
@@ -49,5 +51,5 @@ sed -i 's/TS3_IS_INSTALLED="0"/TS3_IS_INSTALLED="1"/' /root/NeXt-Server-Buster/c
 
 dialog_msg "Please save the shown login information on next page"
 cat /root/NeXt-Server-Buster/teamspeak3_login_data.txt
-source /root/NeXt-Server-Buster/script/functions.sh; continue_or_exit
+continue_or_exit
 }

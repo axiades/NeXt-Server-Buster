@@ -5,10 +5,8 @@ nginx_update_menu() {
 
 trap error_exit ERR
 
-source /root/NeXt-Server-Buster/configs/versions.cfg
-source /root/NeXt-Server-Buster/configs/userconfig.cfg
-source /root/NeXt-Server-Buster/script/functions.sh
-source /root/NeXt-Server-Buster/script/logs.sh; set_logs
+source /root/NeXt-Server-Buster/configs/sources.cfg
+set_logs
 
 LATEST_NGINX_VERSION=$(curl -4sL https://nginx.org/en/download.html 2>&1 | egrep -o "nginx\-[0-9.]+\.tar[.a-z]*" | grep -v '.asc' | awk -F "nginx-" '/.tar.gz$/ {print $2}' | sed -e 's|.tar.gz||g' | head -n1 2>&1)
 LOCAL_NGINX_VERSION=$(nginx -v 2>&1 | grep -o '[0-9.]*$')
@@ -154,6 +152,6 @@ check_nginx() {
   trap error_exit ERR
   sed -i 's/NGINX_VERSION="'${NGINX_VERSION}'"/NGINX_VERSION="'${LATEST_NGINX_VERSION}'"/' /root/NeXt-Server-Buster/configs/versions.cfg
   ##create case for failed update + restore old version value?
-  source /root/NeXt-Server-Buster/checks/nginx-check.sh; check_nginx
-  source /root/NeXt-Server-Buster/script/functions.sh; continue_or_exit
+  check_nginx
+  continue_or_exit
 }

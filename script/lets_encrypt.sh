@@ -48,10 +48,7 @@ echo "0 0 1 */3 *"   root    bash /etc/cron.d/le_cert_alert >> /etc/crontab
 
 update_nginx_cert() {
 
-
-
-source /root/NeXt-Server-Buster/configs/versions.cfg
-source /root/NeXt-Server-Buster/configs/userconfig.cfg
+source /root/NeXt-Server-Buster/configs/sources.cfg
 
 systemctl -q stop nginx.service
 
@@ -92,8 +89,7 @@ update_mailserver_cert() {
 
 
 
-source /root/NeXt-Server-Buster/configs/versions.cfg
-source /root/NeXt-Server-Buster/configs/userconfig.cfg
+source /root/NeXt-Server-Buster/configs/sources.cfg
 
 systemctl -q stop nginx.service
 

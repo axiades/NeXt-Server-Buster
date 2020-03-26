@@ -5,6 +5,8 @@ install_munin() {
 
 trap error_exit ERR
 
+source /root/NeXt-Server-Buster/configs/sources.cfg
+
 install_packages "munin munin-node munin-plugins-extra"
 
 MUNIN_HTTPAUTH_USER=$(username)
@@ -35,5 +37,5 @@ echo "$MUNIN_PATH_NAME" >> /root/NeXt-Server-Buster/configs/blocked_paths.conf
 
 dialog_msg "Please save the shown login information on next page"
 cat /root/NeXt-Server-Buster/munin_login_data.txt
-source /root/NeXt-Server-Buster/script/functions.sh; continue_or_exit
+continue_or_exit
 }

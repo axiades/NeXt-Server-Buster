@@ -5,7 +5,8 @@ install_wordpress() {
 
 trap error_exit ERR
 
-source /root/NeXt-Server-Buster/script/functions.sh; get_domain
+source /root/NeXt-Server-Buster/configs/sources.cfg
+get_domain
 
 WORDPRESS_USER=$(username)
 WORDPRESS_DB_NAME=$(username)
@@ -90,5 +91,5 @@ echo "$WORDPRESS_PATH_NAME" >> /root/NeXt-Server-Buster/configs/blocked_paths.co
 
 dialog_msg "Please save the shown login information on next page"
 cat /root/NeXt-Server-Buster/wordpress_login_data.txt
-source /root/NeXt-Server-Buster/script/functions.sh; continue_or_exit
+continue_or_exit
 }

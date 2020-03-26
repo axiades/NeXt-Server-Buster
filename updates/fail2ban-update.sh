@@ -5,7 +5,7 @@ update_fail2ban() {
 
 trap error_exit ERR
 
-source /root/NeXt-Server-Buster/configs/versions.cfg
+source /root/NeXt-Server-Buster/configs/sources.cfg
 
 LOCAL_FAIL2BAN_VERSION_STRING=$(fail2ban-client --version)
 LOCAL_FAIL2BAN_VERSION=$(echo $LOCAL_FAIL2BAN_VERSION_STRING | cut -c11-16)

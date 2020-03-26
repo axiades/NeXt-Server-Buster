@@ -5,7 +5,7 @@ install_system() {
 
 trap error_exit ERR
 
-source /root/NeXt-Server-Buster/configs/userconfig.cfg
+source /root/NeXt-Server-Buster/configs/sources.cfg
 
 if [ -f "$expert_mode" ]; then
         INTERFACE=$(dialog --clear \

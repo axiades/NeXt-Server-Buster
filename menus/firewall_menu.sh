@@ -3,7 +3,7 @@
 
 menu_options_firewall() {
 
-source /root/NeXt-Server-Buster/script/functions.sh  
+source /root/NeXt-Server-Buster/configs/sources.cfg
 
 HEIGHT=40
 WIDTH=80
@@ -45,7 +45,7 @@ do
         TCP_PORT="$CHOOSE_TCP_PORT"
         if [ ${#TCP_PORT} -ge 7 ]; then
            dialog_msg "Your Input has more than 6 numbers, please try again"
-           source /root/NeXt-Server-Buster/menus/firewall_menu.sh; menu_options_firewall
+           menu_options_firewall
         else
            sed -i "/\<$TCP_PORT\>/ "\!"s/^OPEN_TCP=\"/&$TCP_PORT, /" /etc/arno-iptables-firewall/firewall.conf
            systemctl force-reload arno-iptables-firewall.service
@@ -55,7 +55,7 @@ do
     fi
 done
 continue_or_exit
-source /root/NeXt-Server-Buster/menus/firewall_menu.sh; menu_options_firewall
+menu_options_firewall
 ;;
 
 2)
@@ -71,7 +71,7 @@ do
         UDP_PORT="$CHOOSE_UDP_PORT"
         if [ ${#UDP_PORT} -ge 7 ]; then
            dialog_msg "Your Input has more than 6 numbers, please try again"
-           source /root/NeXt-Server-Buster/menus/firewall_menu.sh; menu_options_firewall
+           menu_options_firewall
         else
            sed -i "/\<$UDP_PORT\>/ "\!"s/^OPEN_UDP=\"/&$UDP_PORT, /" /etc/arno-iptables-firewall/firewall.conf
            systemctl force-reload arno-iptables-firewall.service
@@ -81,7 +81,7 @@ do
     fi
 done
 continue_or_exit
-source /root/NeXt-Server-Buster/menus/firewall_menu.sh; menu_options_firewall
+menu_options_firewall
 ;;
 
 3)
@@ -97,7 +97,7 @@ do
         TCP_PORT_CLOSE="$CHOOSE_TCP_PORT_CLOSE"
         if [ ${#TCP_PORT_CLOSE} -ge 7 ]; then
            dialog_msg "Your Input has more than 6 numbers, please try again"
-           source /root/NeXt-Server-Buster/menus/firewall_menu.sh; menu_options_firewall
+           menu_options_firewall
         else
            sed -i "s/$TCP_PORT_CLOSE, //g" /etc/arno-iptables-firewall/firewall.conf
            systemctl force-reload arno-iptables-firewall.service
@@ -107,7 +107,7 @@ do
     fi
 done
 continue_or_exit
-source /root/NeXt-Server-Buster/menus/firewall_menu.sh; menu_options_firewall
+menu_options_firewall
 ;;
 
 4)
@@ -123,7 +123,7 @@ do
         UDP_PORT_CLOSE="$CHOOSE_UDP_PORT_CLOSE"
         if [ ${#UDP_PORT_CLOSE} -ge 7 ]; then
            dialog_msg "Your Input has more than 6 numbers, please try again"
-           source /root/NeXt-Server-Buster/menus/firewall_menu.sh; menu_options_firewall
+           menu_options_firewall
         else
            sed -i "s/$UDP_PORT_CLOSE, //g" /etc/arno-iptables-firewall/firewall.conf
            systemctl force-reload arno-iptables-firewall.service
@@ -133,17 +133,17 @@ do
     fi
 done
 continue_or_exit
-source /root/NeXt-Server-Buster/menus/firewall_menu.sh; menu_options_firewall
+menu_options_firewall
 ;;
 
 5)
-    source /root/NeXt-Server-Buster/script/firewall_options.sh; show_open_ports
+    show_open_ports
     continue_or_exit
-    source /root/NeXt-Server-Buster/menus/firewall_menu.sh; menu_options_firewall
+    menu_options_firewall
 ;;
 
 6)
-    source /root/NeXt-Server-Buster/menus/services_menu.sh; menu_options_services
+    menu_options_services
 ;;
 
 7)
