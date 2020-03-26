@@ -28,6 +28,12 @@ username() {
 done
 }
 
+sed_replace_word() {
+  var_1_clean=$(echo "$1" | sed 's/\//\\\//g')
+  var_2_clean=$(echo "$2" | sed 's/\//\\\//g')
+  sed -i "s/$var_1_clean;/$var_2_clean;/g" $3 
+}
+
 setipaddrvars() {
 IPADR=$(ip route get 1.1.1.1 | awk '/1.1.1.1/ {print $(NF-2)}')
 IPV4GAT=$(ip route | awk '/default/ { print $3 }')
