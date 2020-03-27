@@ -22,6 +22,7 @@ if [ -f "$expert_mode" ]; then
                           $HEIGHT $WIDTH \
                           3>&1 1>&2 2>&3 3>&- \
                           )
+
     sed -i 's/^IPADR=.*/IPADR='"'${IPADR}'"'/g' /root/NeXt-Server-Buster/script/functions.sh
     sed -i 's/^IPADR=.*/IPADR='"'${IPADR}'"'/g' /root/NeXt-Server-Buster/script/postfix.sh
 fi
@@ -29,27 +30,27 @@ fi
 rm /etc/network/interfaces
 if [[ ${IPV4_ONLY} = "1" ]]; then
   cp -f /root/NeXt-Server-Buster/configs/IPv4.interface /etc/network/interfaces
-  sed -i "s/INTERFACENAME/${INTERFACE}/" /etc/network/interfaces
-  sed -i "s/IPV4ADDR/${IPADR}/" /etc/network/interfaces
-  sed -i "s/IPV4GATE/${IPV4GAT}/" /etc/network/interfaces
+  sed_replace_word "INTERFACENAME" "${INTERFACE}" "/etc/network/interfaces"
+  sed_replace_word "IPV4ADDR" "${IPADR}" "/etc/network/interfaces"
+  sed_replace_word "IPV4GATE" "${IPV4GAT}" "/etc/network/interfaces"
 fi
 
 if [[ ${IPV6_ONLY} = "1" ]]; then
   cp -f /root/NeXt-Server-Buster/configs/IPv6.interface /etc/network/interfaces
-  sed -i "s/INTERFACENAME/${INTERFACE}/" /etc/network/interfaces
-  sed -i "s/IPV6ADDR/${IP6ADR}/" /etc/network/interfaces
-  sed -i "s/IPV6GATE/${IPV6GAT}/" /etc/network/interfaces
-  sed -i "s/IPV6NET/${IPV6NET}/" /etc/network/interfaces
+  sed_replace_word "INTERFACENAME" "${INTERFACE}" "/etc/network/interfaces"
+  sed_replace_word "IPV6ADDR" "${IP6ADR}" "/etc/network/interfaces"
+  sed_replace_word "IPV6GATE" "${IPV6GAT}" "/etc/network/interfaces"
+  sed_replace_word "IPV6NET" "${IPV6NET}" "/etc/network/interfaces"
 fi
 
 if [[ ${IP_DUAL} = "1" ]]; then
   cp -f /root/NeXt-Server-Buster/configs/IPv4-IPv6.interface /etc/network/interfaces
-  sed -i "s/INTERFACENAME/${INTERFACE}/" /etc/network/interfaces
-  sed -i "s/IPV4ADDR/${IPADR}/" /etc/network/interfaces
-  sed -i "s/IPV4GATE/${IPV4GAT}/" /etc/network/interfaces
-  sed -i "s/IPV6ADDR/${IP6ADR}/" /etc/network/interfaces
-  sed -i "s/IPV6GATE/${IPV6GAT}/" /etc/network/interfaces
-  sed -i "s/IPV6NET/${IPV6NET}/" /etc/network/interfaces
+  sed_replace_word "INTERFACENAME" "${INTERFACE}" "/etc/network/interfaces"
+  sed_replace_word "IPV4ADDR" "${IPADR}" "/etc/network/interfaces"
+  sed_replace_word "IPV4GATE" "${IPV4GAT}" "/etc/network/interfaces"
+  sed_replace_word "IPV6ADDR" "${IP6ADR}" "/etc/network/interfaces"
+  sed_replace_word "IPV6GATE" "${IPV6GAT}" "/etc/network/interfaces"
+  sed_replace_word "IPV6NET" "${IPV6NET}" "/etc/network/interfaces"
 fi
 
 hostnamectl set-hostname --static mail
@@ -63,7 +64,7 @@ cat > /etc/hosts <<END
 ff02::1     ip6-allnodes
 ff02::2     ip6-allrouters
 END
-sed -i "s/domain.tld/${MYDOMAIN}/g" /etc/hosts
+sed_replace_word "domain.tld" "${MYDOMAIN}" "/etc/hosts"
 
 echo $(hostname -f) > /etc/mailname
 
