@@ -144,7 +144,6 @@ update_nginx() {
   check_nginx
   continue_or_exit
 }
-}
 
 restore_nginx_backup() {
   
