@@ -138,6 +138,12 @@ update_nginx() {
   ./configure $NGINX_OPTIONS $NGINX_MODULES --with-cc-opt='-O2 -g -pipe -Wall -Wformat -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector-strong -m64 -mtune=generic'
   make -j $(nproc)
   make install
+
+  sed -i 's/NGINX_VERSION="'${NGINX_VERSION}'"/NGINX_VERSION="'${LATEST_NGINX_VERSION}'"/' /root/NeXt-Server-Buster/configs/versions.cfg
+  ##create case for failed update + restore old version value?
+  check_nginx
+  continue_or_exit
+}
 }
 
 restore_nginx_backup() {
@@ -145,13 +151,4 @@ restore_nginx_backup() {
   trap error_exit ERR
   mv -v /etc/nginx/backup/* /var/www/${MYDOMAIN}/public/
   systemctl -q start nginx.service
-}
-
-check_nginx() {
-
-  trap error_exit ERR
-  sed -i 's/NGINX_VERSION="'${NGINX_VERSION}'"/NGINX_VERSION="'${LATEST_NGINX_VERSION}'"/' /root/NeXt-Server-Buster/configs/versions.cfg
-  ##create case for failed update + restore old version value?
-  check_nginx
-  continue_or_exit
 }
