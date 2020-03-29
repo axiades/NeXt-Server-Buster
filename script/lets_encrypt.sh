@@ -32,12 +32,8 @@ ln -s /root/.acme.sh/${MYDOMAIN}_ecc/${MYDOMAIN}.key /etc/nginx/ssl/${MYDOMAIN}-
 HPKP1=$(openssl x509 -pubkey < /etc/nginx/ssl/${MYDOMAIN}-ecc.cer | openssl pkey -pubin -outform der | openssl dgst -sha256 -binary | base64) 
 HPKP2=$(openssl rand -base64 32) 
 
-#SED doesn't work when the HPKP contains "/", so we escape it
-HPKP1=$(echo "$HPKP1" | sed 's/\//\\\//g')
-HPKP2=$(echo "$HPKP2" | sed 's/\//\\\//g')
-
-sed -i "s/HPKP1/${HPKP1}/g" /etc/nginx/_general.conf
-sed -i "s/HPKP2/${HPKP2}/g" /etc/nginx/_general.conf
+sed_replace_word "HPKP1" "${HPKP1}" "/etc/nginx/_general.conf"
+sed_replace_word "HPKP2" "${HPKP2}" "/etc/nginx/_general.conf"
 
 sed -i 's/HPKP1="1"/HPKP1="'${HPKP1}'"/' /root/NeXt-Server-Buster/configs/userconfig.cfg
 sed -i 's/HPKP2="2"/HPKP2="'${HPKP2}'"/' /root/NeXt-Server-Buster/configs/userconfig.cfg
@@ -76,8 +72,8 @@ HPKP2=$(openssl rand -base64 32)
 HPKP1=$(echo "$HPKP1" | sed 's/\//\\\//g')
 HPKP2=$(echo "$HPKP2" | sed 's/\//\\\//g')
 
-sed -i "s/HPKP1/${HPKP1}/g" /etc/nginx/_general.conf
-sed -i "s/HPKP2/${HPKP2}/g" /etc/nginx/_general.conf
+sed_replace_word "HPKP1" "${HPKP1}" "/etc/nginx/_general.conf"
+sed_replace_word "HPKP2" "${HPKP2}" "/etc/nginx/_general.conf"
 
 sed -i 's/HPKP1="1"/HPKP1="'${HPKP1}'"/' /root/NeXt-Server-Buster/configs/userconfig.cfg
 sed -i 's/HPKP2="2"/HPKP2="'${HPKP2}'"/' /root/NeXt-Server-Buster/configs/userconfig.cfg

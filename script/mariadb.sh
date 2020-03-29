@@ -17,7 +17,7 @@ echo "MYSQL_ROOT_PASS: $MYSQL_ROOT_PASS" >> /root/NeXt-Server-Buster/login_infor
 echo "#------------------------------------------------------------------------------#" >> /root/NeXt-Server-Buster/login_information.txt
 echo "" >> /root/NeXt-Server-Buster/login_information.txt
 
-sed -i 's/.*max_allowed_packet.*/max_allowed_packet      = 128M/g' /etc/mysql/my.cnf
+sed_replace_word ".*max_allowed_packet.*" "max_allowed_packet      = 128M" "/etc/mysql/my.cnf"
 
 mysql -u root -p${MYSQL_ROOT_PASS} -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASS}';" 
 }

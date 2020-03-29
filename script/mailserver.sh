@@ -19,7 +19,7 @@ echo "MAILSERVER_DB_PASS: $MAILSERVER_DB_PASS" >> /root/NeXt-Server-Buster/login
 echo "#------------------------------------------------------------------------------#" >> /root/NeXt-Server-Buster/login_information.txt
 echo "" >> /root/NeXt-Server-Buster/login_information.txt
 
-sed -i "s/placeholder/${MAILSERVER_DB_PASS}/g" /root/NeXt-Server-Buster/configs/mailserver/database.sql
+sed_replace_word "placeholder" "${MAILSERVER_DB_PASS}" "/root/NeXt-Server-Buster/configs/mailserver/database.sql"
 mysql -u root -p${MYSQL_ROOT_PASS} mysql < /root/NeXt-Server-Buster/configs/mailserver/database.sql
 
 mysql -u root -p${MYSQL_ROOT_PASS} mysql < /root/NeXt-Server-Buster/configs/mailserver/tlspolicies.sql
