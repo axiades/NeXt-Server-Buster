@@ -7,25 +7,6 @@ trap error_exit ERR
 
 source /root/NeXt-Server-Buster/configs/sources.cfg
 
-if [ -f "$expert_mode" ]; then
-        INTERFACE=$(dialog --clear \
-                          --backtitle "$BACKTITLE" \
-                          --inputbox "Enter your INTERFACE" \
-                          $HEIGHT $WIDTH \
-                          3>&1 1>&2 2>&3 3>&- \
-                          )
-    sed_replace_word "^INTERFACE=.*/" "${INTERFACE}" "/root/NeXt-Server-Buster/script/functions.sh"
-
-        IPADR=$(dialog --clear \
-                          --backtitle "$BACKTITLE" \
-                          --inputbox "Enter your IPv4" \
-                          $HEIGHT $WIDTH \
-                          3>&1 1>&2 2>&3 3>&- \
-                          )
-    sed_replace_word "^IPADR=.*/" "IPADR='"'${IPADR}'"'" "/root/NeXt-Server-Buster/script/functions.sh"                      
-    sed_replace_word "^IPADR=.*" "IPADR='"'${IPADR}'"'" "/root/NeXt-Server-Buster/script/postfix.sh" 
-fi
-
 rm /etc/network/interfaces
 if [[ ${IPV4_ONLY} = "1" ]]; then
   cp -f /root/NeXt-Server-Buster/configs/IPv4.interface /etc/network/interfaces

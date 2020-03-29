@@ -25,7 +25,7 @@ RANDOM_SSH_PORT="$(($RANDOM % 1023))"
    fi
 done
 
-sed -i "s/^Port 22/Port $SSH_PORT/g" /etc/ssh/sshd_config
+sed_replace_word "^Port 22" "Port $SSH_PORT" "/etc/ssh/sshd_config"
 echo "$SSH_PORT" >> /root/NeXt-Server-Buster/configs/blocked_ports.conf
 
 echo "#------------------------------------------------------------------------------#" >> /root/NeXt-Server-Buster/login_information.txt

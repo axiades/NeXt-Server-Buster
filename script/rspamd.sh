@@ -62,7 +62,7 @@ chmod 440 /var/lib/rspamd/dkim/*
 cp /var/lib/rspamd/dkim/${CURRENT_YEAR}.txt /root/NeXt-Server-Buster/DKIM_KEY_ADD_TO_DNS.txt
 
 cp /root/NeXt-Server-Buster/configs/rspamd/dkim_signing.conf /etc/rspamd/local.d/dkim_signing.conf
-sed -i "s/placeholder/${CURRENT_YEAR}/g" /etc/rspamd/local.d/dkim_signing.conf
+sed_replace_word "placeholder" "${CURRENT_YEAR}" "/etc/rspamd/local.d/dkim_signing.conf"
 
 cp -R /etc/rspamd/local.d/dkim_signing.conf /etc/rspamd/local.d/arc.conf
 
@@ -71,7 +71,7 @@ install_packages "redis-server"
 cp /root/NeXt-Server-Buster/configs/rspamd/redis.conf /etc/rspamd/local.d/redis.conf
 
 REDIS_PASSWORT=$(password)
-sed -i "s/# rename-command CONFIG b840fc02d524045429941cc15f59e41cb7be6c52/rename-command CONFIG ${REDIS_PASSWORT}/g" /etc/redis/redis.conf
+sed_replace_word "# rename-command CONFIG b840fc02d524045429941cc15f59e41cb7be6c52" "rename-command CONFIG ${REDIS_PASSWORT}" "/etc/redis/redis.conf"
 
 echo "#------------------------------------------------------------------------------#" >> /root/NeXt-Server-Buster/login_information.txt
 echo "Redis Password: ${REDIS_PASSWORT}" >> /root/NeXt-Server-Buster/login_information.txt
@@ -79,7 +79,7 @@ echo "#-------------------------------------------------------------------------
 echo "" >> /root/NeXt-Server-Buster/login_information.txt
 
 cp /root/NeXt-Server-Buster/configs/mailserver/_rspamd.conf /etc/nginx/_rspamd.conf
-sed -i "s/#include _rspamd.conf;/include _rspamd.conf;/g" /etc/nginx/sites-available/${MYDOMAIN}.conf
+sed_replace_word "#include _rspamd.conf;" "include _rspamd.conf;" "/etc/nginx/sites-available/${MYDOMAIN}.conf"
 
 systemctl restart redis-server
 systemctl restart nginx

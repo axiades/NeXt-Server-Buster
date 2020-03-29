@@ -88,22 +88,22 @@ cp /root/NeXt-Server-Buster/configs/nginx/confs/* /etc/nginx/
 
 rm -rf /etc/nginx/sites-available/${MYDOMAIN}.conf
 cp /root/NeXt-Server-Buster/configs/nginx/vhost /etc/nginx/sites-available/${MYDOMAIN}.conf
-sed -i "s/MYDOMAIN/${MYDOMAIN}/g" /etc/nginx/sites-available/${MYDOMAIN}.conf
-sed -i "s/MYDOMAIN/${MYDOMAIN}/g" /etc/nginx/_pagespeed.conf
+sed_replace_word "MYDOMAIN" "${MYDOMAIN}" "/etc/nginx/sites-available/${MYDOMAIN}.conf"
+sed_replace_word "MYDOMAIN" "${MYDOMAIN}" "/etc/nginx/_pagespeed.conf"
 
 if [[ ${IPV4_ONLY} = "1" ]]; then
-  sed -i "s/IPADR/${IPADR}/g" /etc/nginx/sites-available/${MYDOMAIN}.conf
+  sed_replace_word "IPADR" "${IPADR}" "/etc/nginx/sites-available/${MYDOMAIN}.conf"
 fi
 
 if [[ ${IPV6_ONLY} = "1" ]]; then
 ### doesn't work at all, bc hes adding ipv4 too	
-  sed -i "s/IPADR/:/g" /etc/nginx/sites-available/${MYDOMAIN}.conf
-  sed -i "s/IP6ADR/::/g" /etc/nginx/sites-available/${MYDOMAIN}.conf
+  sed_replace_word "IPADR" ":" "/etc/nginx/sites-available/${MYDOMAIN}.conf"
+  sed_replace_word "IP6ADR" "${IP6ADR}" "/etc/nginx/sites-available/${MYDOMAIN}.conf"
 fi
 
 if [[ ${IP_DUAL} == '1' ]]; then
-  sed -i "s/IPADR/${IPADR}/g" /etc/nginx/sites-available/${MYDOMAIN}.conf
-  sed -i "s/IP6ADR/${IP6ADR}/g" /etc/nginx/sites-available/${MYDOMAIN}.conf
+  sed_replace_word "IPADR" "${IPADR}" "/etc/nginx/sites-available/${MYDOMAIN}.conf"
+  sed_replace_word "IP6ADR" "${IP6ADR}" "/etc/nginx/sites-available/${MYDOMAIN}.conf"
 fi
 
 chown -R www-data:www-data /var/www/${MYDOMAIN}/public
