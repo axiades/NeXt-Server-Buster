@@ -14,7 +14,7 @@ if [ -f "$expert_mode" ]; then
                           $HEIGHT $WIDTH \
                           3>&1 1>&2 2>&3 3>&- \
                           )
-    sed -i 's/^INTERFACE=.*/INTERFACE='"'${INTERFACE}'"'/g' /root/NeXt-Server-Buster/script/functions.sh
+    sed_replace_word "^INTERFACE=.*/" "${INTERFACE}" "/root/NeXt-Server-Buster/script/functions.sh"
 
         IPADR=$(dialog --clear \
                           --backtitle "$BACKTITLE" \
@@ -22,9 +22,8 @@ if [ -f "$expert_mode" ]; then
                           $HEIGHT $WIDTH \
                           3>&1 1>&2 2>&3 3>&- \
                           )
-
-    sed -i 's/^IPADR=.*/IPADR='"'${IPADR}'"'/g' /root/NeXt-Server-Buster/script/functions.sh
-    sed -i 's/^IPADR=.*/IPADR='"'${IPADR}'"'/g' /root/NeXt-Server-Buster/script/postfix.sh
+    sed_replace_word "^IPADR=.*/" "IPADR='"'${IPADR}'"'" "/root/NeXt-Server-Buster/script/functions.sh"                      
+    sed_replace_word "^IPADR=.*" "IPADR='"'${IPADR}'"'" "/root/NeXt-Server-Buster/script/postfix.sh" 
 fi
 
 rm /etc/network/interfaces
@@ -71,8 +70,7 @@ echo $(hostname -f) > /etc/mailname
 TIMEZONE_DETECTED=$(wget http://ip-api.com/line/${IPADR}?fields=timezone -q -O -)
 timedatectl set-timezone ${TIMEZONE_DETECTED}
 
-TIMEZONE_DETECTED=$(echo "$TIMEZONE_DETECTED" | sed 's/\//\\\//g')
-sed -i "s/EMPTY_TIMEZONE/${TIMEZONE_DETECTED}/g" /root/NeXt-Server-Buster/configs/userconfig.cfg
+sed_replace_word "EMPTY_TIMEZONE" "${TIMEZONE_DETECTED}" "/root/NeXt-Server-Buster/configs/userconfig.cfg"
 
 rm /etc/apt/sources.list
 cat > /etc/apt/sources.list <<END
@@ -101,8 +99,8 @@ install_packages "dirmngr software-properties-common sudo rkhunter debsecan debs
 cp -f /root/NeXt-Server-Buster/configs/needrestart.conf /etc/needrestart/needrestart.conf
 cp -f /root/NeXt-Server-Buster/configs/20auto-upgrades /etc/apt/apt.conf.d/20auto-upgrades
 cp -f /root/NeXt-Server-Buster/configs/50unattended-upgrades /etc/apt/apt.conf.d/50unattended-upgrades
-sed -i "s/email_address=root/email_address=${NXT_SYSTEM_EMAIL}/g" /etc/apt/listchanges.conf
-sed -i "s/changeme/${NXT_SYSTEM_EMAIL}/g" /etc/apt/apt.conf.d/50unattended-upgrades
+sed_replace_word "email_address=root" "email_address=${NXT_SYSTEM_EMAIL}" "/etc/apt/listchanges.conf"
+sed_replace_word "changeme" "${NXT_SYSTEM_EMAIL}" "/etc/apt/apt.conf.d/50unattended-upgrades"
 
 #thanks to https://linuxacademy.com/howtoguides/posts/show/topic/19700-linux-security-and-server-hardening-part1
 cat > /etc/sysctl.conf <<END
@@ -178,9 +176,9 @@ cp -f /root/NeXt-Server-Buster/cronjobs/webserver_backup /etc/cron.daily/
 chmod +x /etc/cron.daily/webserver_backup
 
 cp -f /root/NeXt-Server-Buster/cronjobs/le_cert_alert /etc/cron.d/
-sed -i "s/changeme/${NXT_SYSTEM_EMAIL}/g" /etc/cron.d/le_cert_alert
+sed_replace_word "changeme" "${NXT_SYSTEM_EMAIL}" "/etc/cron.d/le_cert_alert"
 
 cp -f /root/NeXt-Server-Buster/cronjobs/free_disk_space /etc/cron.daily/
-sed -i "s/changeme/${NXT_SYSTEM_EMAIL}/g" /etc/cron.daily/free_disk_space
+sed_replace_word "changeme" "${NXT_SYSTEM_EMAIL}" "/etc/cron.daily/free_disk_space"
 chmod +x /etc/cron.daily/free_disk_space
 }
