@@ -51,21 +51,21 @@ bash /usr/local/share/environment
 
 INTERFACE=$(ip route get 9.9.9.9 | head -1 | cut -d' ' -f5)
 
-sed -i "s/^EXT_IF=.*/EXT_IF="${INTERFACE}"/g" /etc/arno-iptables-firewall/firewall.conf
-sed -i 's/^EXT_IF_DHCP_IP=.*/EXT_IF_DHCP_IP="0"/g' /etc/arno-iptables-firewall/firewall.conf
-sed -i 's/^#FIREWALL_LOG=.*/FIREWALL_LOG="\/var\/log\/firewall.log"/g' /etc/arno-iptables-firewall/firewall.conf
-sed -i 's/^DRDOS_PROTECT=.*/DRDOS_PROTECT="1"/g' /etc/arno-iptables-firewall/firewall.conf
-sed -i 's/^OPEN_ICMP=.*/OPEN_ICMP="1"/g' /etc/arno-iptables-firewall/firewall.conf
-sed -i 's/^#BLOCK_HOSTS_FILE=.*/BLOCK_HOSTS_FILE="\/etc\/arno-iptables-firewall\/blocked-hosts"/g' /etc/arno-iptables-firewall/firewall.conf
+sed_replace_word "^EXT_IF=.*" "EXT_IF="${INTERFACE}"" "/etc/arno-iptables-firewall/firewall.conf"
+sed_replace_word "^EXT_IF_DHCP_IP=.*" "EXT_IF_DHCP_IP="0"" "/etc/arno-iptables-firewall/firewall.conf"
+sed_replace_word "^#FIREWALL_LOG=.*" "FIREWALL_LOG="/var/log/firewall.log"" "/etc/arno-iptables-firewall/firewall.conf"
+sed_replace_word "^DRDOS_PROTECT=.*" "DRDOS_PROTECT="1"" "/etc/arno-iptables-firewall/firewall.conf"
+sed_replace_word "^OPEN_ICMP=.*" "OPEN_ICMP="1"" "/etc/arno-iptables-firewall/firewall.conf"
+sed_replace_word "^#BLOCK_HOSTS_FILE=.*" "BLOCK_HOSTS_FILE="/etc/arno-iptables-firewall/blocked-hosts"" "/etc/arno-iptables-firewall/firewall.conf"
 
 if [[ ${USE_MAILSERVER} == '1' ]]; then
-   sed -i "s/^OPEN_TCP=.*/OPEN_TCP=\"${SSH_PORT}, 25, 80, 110, 143, 443, 465, 587, 993, 995, 4000\"/" /etc/arno-iptables-firewall/firewall.conf
+   sed_replace_word "^OPEN_TCP=.*/OPEN_TCP=\"${SSH_PORT}, 25, 80, 110, 143, 443, 465, 587, 993, 995, 4000\"/" "/etc/arno-iptables-firewall/firewall.conf"
 else
-   sed -i "s/^OPEN_TCP=.*/OPEN_TCP=\"${SSH_PORT}, 80, 443, 4000\"/" /etc/arno-iptables-firewall/firewall.conf
+   sed_replace_word "^OPEN_TCP=.*/OPEN_TCP=\"${SSH_PORT}, 80, 443, 4000\"/" "/etc/arno-iptables-firewall/firewall.conf"
 fi
 
-sed -i 's/^OPEN_UDP=.*/OPEN_UDP="25, 80, 110, 143, 443, 465, 587, 993, 995"/' /etc/arno-iptables-firewall/firewall.conf
-sed -i 's/^VERBOSE=.*/VERBOSE=1/' /etc/init.d/arno-iptables-firewall
+sed_replace_word "^OPEN_UDP=.*" "OPEN_UDP="25, 80, 110, 143, 443, 465, 587, 993, 995"" "/etc/arno-iptables-firewall/firewall.conf"
+sed_replace_word "^VERBOSE=.*" "VERBOSE=1/" "/etc/init.d/arno-iptables-firewall"
 
 systemctl -q daemon-reload
 systemctl -q start arno-iptables-firewall.service
@@ -75,10 +75,10 @@ touch /etc/rc.local
 
 mkdir -p /root/NeXt-Server-Buster/sources/blacklist
 mkdir -p /etc/arno-iptables-firewall/blocklists
-sed -i 's/.*IPTABLES_IPSET=.*/IPTABLES_IPSET=1/' /etc/arno-iptables-firewall/firewall.conf
-sed -i 's/.*IPTABLES_IPSET_HASHSIZE=.*/IPTABLES_IPSET_HASHSIZE=16384/' /etc/arno-iptables-firewall/firewall.conf
-sed -i 's/.*IPTABLES_IPSET_MAXELEM=.*/IPTABLES_IPSET_MAXELEM=120000/' /etc/arno-iptables-firewall/firewall.conf
-sed -i 's/.*BLOCK_NETSET_DIR=.*/BLOCK_NETSET_DIR="\/etc\/arno-iptables-firewall\/blocklists"/' /etc/arno-iptables-firewall/firewall.conf
+sed_replace_word ".*IPTABLES_IPSET=.*" "IPTABLES_IPSET=1" "/etc/arno-iptables-firewall/firewall.conf"
+sed_replace_word ".*IPTABLES_IPSET_HASHSIZE=.*" "IPTABLES_IPSET_HASHSIZE=16384" "/etc/arno-iptables-firewall/firewall.conf"
+sed_replace_word ".*IPTABLES_IPSET_MAXELEM=.*" "IPTABLES_IPSET_MAXELEM=120000" "/etc/arno-iptables-firewall/firewall.conf"
+sed_replace_word ".*BLOCK_NETSET_DIR=.*" "BLOCK_NETSET_DIR="/etc/arno-iptables-firewall/blocklists"" "/etc/arno-iptables-firewall/firewall.conf"
 
 cat > /etc/cron.daily/blocked-hosts <<END
 #!/bin/bash
