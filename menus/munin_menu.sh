@@ -21,12 +21,12 @@ clear
 case $CHOICE in
 1)
 MUNIN_PATH_NAME="munin"
-sed -i 's/MUNIN_PATH_NAME="0"/MUNIN_PATH_NAME="'${MUNIN_PATH_NAME}'"/' /root/NeXt-Server-Buster/configs/userconfig.cfg
+sed_replace_word "MUNIN_PATH_NAME="0"" "MUNIN_PATH_NAME="'${MUNIN_PATH_NAME}'"" "/root/NeXt-Server-Buster/configs/userconfig.cfg"
 ;;
 
 2)
 MUNIN_PATH_NAME="monitoring"
-sed -i 's/MUNIN_PATH_NAME="0"/MUNIN_PATH_NAME="'${MUNIN_PATH_NAME}'"/' /root/NeXt-Server-Buster/configs/userconfig.cfg
+sed_replace_word "MUNIN_PATH_NAME="0"" "MUNIN_PATH_NAME="'${MUNIN_PATH_NAME}'"" "/root/NeXt-Server-Buster/configs/userconfig.cfg"
 ;;
 
 3)
@@ -47,7 +47,7 @@ if [[ "$MUNIN_PATH_NAME" =~ ^[a-zA-Z0-9]+$ ]]; then
            dialog_msg "[ERROR] Your Munin path ${MUNIN_PATH_NAME} is already used by the script, please choose another one!"
            dialog --clear
        else
-           sed -i 's/MUNIN_PATH_NAME="0"/MUNIN_PATH_NAME="'${MUNIN_PATH_NAME}'"/' /root/NeXt-Server-Buster/configs/userconfig.cfg
+           sed_replace_word "MUNIN_PATH_NAME="0"" "MUNIN_PATH_NAME="'${MUNIN_PATH_NAME}'"" "/root/NeXt-Server-Buster/configs/userconfig.cfg"
            break
       fi
     else

@@ -34,12 +34,12 @@ chmod g-s /var/www/${MYDOMAIN}/public/${PHPMYADMIN_PATH_NAME}/upload
 mysql -u root -p${MYSQL_ROOT_PASS} mysql < /var/www/${MYDOMAIN}/public/${PHPMYADMIN_PATH_NAME}/sql/create_tables.sql
 
 cp /root/NeXt-Server-Buster/configs/pma/config.inc.php /var/www/${MYDOMAIN}/public/${PHPMYADMIN_PATH_NAME}/config.inc.php
-sed -i "s/PMA_BFSECURE_PASS/${PMA_BFSECURE_PASS}/g" /var/www/${MYDOMAIN}/public/${PHPMYADMIN_PATH_NAME}/config.inc.php
+sed_replace_word "PMA_BFSECURE_PASS" "${PMA_BFSECURE_PASS}" "/var/www/${MYDOMAIN}/public/${PHPMYADMIN_PATH_NAME}/config.inc.php"
 
 cp /root/NeXt-Server-Buster/addons/vhosts/_phpmyadmin.conf /etc/nginx/_phpmyadmin.conf
-sed -i "s/#include _phpmyadmin.conf;/include _phpmyadmin.conf;/g" /etc/nginx/sites-available/${MYDOMAIN}.conf
-sed -i "s/change_path/${PHPMYADMIN_PATH_NAME}/g" /etc/nginx/_phpmyadmin.conf
-sed -i "s/MYDOMAIN/${MYDOMAIN}/g" /etc/nginx/_phpmyadmin.conf
+sed_replace_word "#include _phpmyadmin.conf;" "include _phpmyadmin.conf;" "/etc/nginx/sites-available/${MYDOMAIN}.conf"
+sed_replace_word "change_path" "${PHPMYADMIN_PATH_NAME}" "/etc/nginx/_phpmyadmin.conf"
+sed_replace_word "MYDOMAIN" "${MYDOMAIN}" "/etc/nginx/_phpmyadmin.conf"
 
 chown -R www-data:www-data /var/www/${MYDOMAIN}/public/${PHPMYADMIN_PATH_NAME}/
 
@@ -64,7 +64,7 @@ echo "PMADB_PASS = ${PMADB_PASS}" >> /root/NeXt-Server-Buster/phpmyadmin_login_d
 echo "" >> /root/NeXt-Server-Buster/phpmyadmin_login_data.txt
 echo "blowfish_secret = ${PMA_BFSECURE_PASS}" >> /root/NeXt-Server-Buster/phpmyadmin_login_data.txt
 
-sed -i 's/PMA_IS_INSTALLED="0"/PMA_IS_INSTALLED="1"/' /root/NeXt-Server-Buster/configs/userconfig.cfg
+sed_replace_word "PMA_IS_INSTALLED="0"" "PMA_IS_INSTALLED="1"" "/root/NeXt-Server-Buster/configs/userconfig.cfg"
 echo "${PHPMYADMIN_PATH_NAME}" >> /root/NeXt-Server-Buster/configs/blocked_paths.conf
 
 dialog_msg "Please save the shown login information on next page"

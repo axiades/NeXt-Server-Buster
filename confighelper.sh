@@ -64,8 +64,8 @@ fi
 
 # --- DNS Check ---
 server_ip=$(ip route get 1.1.1.1 | awk '/1.1.1.1/ {print $(NF-2)}')
-sed -i "s/server_ip/$server_ip/g" /root/NeXt-Server-Buster/dns_settings.txt
-sed -i "s/yourdomain.com/$MYDOMAIN/g" /root/NeXt-Server-Buster/dns_settings.txt
+sed_replace_word "server_ip" "$server_ip" "/root/NeXt-Server-Buster/dns_settings.txt"
+sed_replace_word "yourdomain.com" "$MYDOMAIN" "/root/NeXt-Server-Buster/dns_settings.txt"
 dialog --title "DNS Settings" --tab-correct --exit-label "ok" --textbox /root/NeXt-Server-Buster/dns_settings.txt 50 200
 
 BACKTITLE="NeXt Server Installation"

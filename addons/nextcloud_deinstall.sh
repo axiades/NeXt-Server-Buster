@@ -16,11 +16,11 @@ mysql -u root -p${MYSQL_ROOT_PASS} -e "DROP USER ${NextcloudDBUser}@localhost;"
 rm -rf /var/www/${MYDOMAIN}/public/${NEXTCLOUD_PATH_NAME}
 rm /root/NeXt-Server-Buster/nextcloud_login_data.txt
 rm /etc/nginx/_nextcloud.conf
-sed -i "s/include _nextcloud.conf;/#include _nextcloud.conf;/g" /etc/nginx/sites-available/${MYDOMAIN}.conf
+sed_replace_word "include _nextcloud.conf;" "#include _nextcloud.conf;" "/etc/nginx/sites-available/${MYDOMAIN}.conf"
 
 systemctl -q restart php$PHPVERSION7-fpm.service
 systemctl -q restart nginx.service
 
-sed -i 's/NEXTCLOUD_PATH_NAME=".*"/NEXTCLOUD_PATH_NAME="0"/' /root/NeXt-Server-Buster/configs/userconfig.cfg
-sed -i 's/NEXTCLOUD_IS_INSTALLED="1"/NEXTCLOUD_IS_INSTALLED="0"/' /root/NeXt-Server-Buster/configs/userconfig.cfg
+sed_replace_word "NEXTCLOUD_PATH_NAME=".*"" "NEXTCLOUD_PATH_NAME="0"" "/root/NeXt-Server-Buster/configs/userconfig.cfg"
+sed_replace_word "NEXTCLOUD_IS_INSTALLED="1"" "NEXTCLOUD_IS_INSTALLED="0"" "/root/NeXt-Server-Buster/configs/userconfig.cfg"
 }

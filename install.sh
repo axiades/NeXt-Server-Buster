@@ -1,14 +1,14 @@
 #!/bin/bash
 #Please check the license provided with the script!
 
+source /root/NeXt-Server-Buster/configs/sources.cfg
+
 dev_mode=/root/NeXt-Server-Buster/dev.conf
 if [ -f "$dev_mode" ]; then
-    sed -i "s/ec-384/ec-384 --staging/g" /root/NeXt-Server-Buster/script/lets_encrypt.sh
-    sed -i "s/4096/4096 --staging/g" /root/NeXt-Server-Buster/script/mailserver.sh
+    sed_replace_word "ec-384" "ec-384 --staging" "/root/NeXt-Server-Buster/script/lets_encrypt.sh"
+    sed_replace_word "4096" "4096 --staging" "/root/NeXt-Server-Buster/script/mailserver.sh"
     set -x
 fi
- 
-source /root/NeXt-Server-Buster/configs/sources.cfg
 
 install_start=`date +%s`
 

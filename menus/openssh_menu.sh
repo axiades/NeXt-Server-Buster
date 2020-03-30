@@ -66,7 +66,7 @@ if [[ $INPUT_NEW_SSH_PORT =~ ^-?[0-9]+$ ]]; then
                 dialog --clear
             else
                 NEW_SSH_PORT="$INPUT_NEW_SSH_PORT"
-                sed -i "s/^Port .*/Port $NEW_SSH_PORT/g" /etc/ssh/sshd_config
+                sed_replace_word "^Port .*" "Port $NEW_SSH_PORT" "/etc/ssh/sshd_config"
                 break
             fi
         done

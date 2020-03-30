@@ -34,8 +34,8 @@ fi
 chown -R www-data: /var/www/${MYDOMAIN}/public/${NEXTCLOUD_PATH_NAME}
 
 cp /root/NeXt-Server-Buster/addons/vhosts/_nextcloud.conf /etc/nginx/_nextcloud.conf
-sed -i "s/#include _nextcloud.conf;/include _nextcloud.conf;/g" /etc/nginx/sites-available/${MYDOMAIN}.conf
-sed -i "s/change_path/${NEXTCLOUD_PATH_NAME}/g" /etc/nginx/_nextcloud.conf
+sed_replace_word "#include _nextcloud.conf;" "include _nextcloud.conf;" "/etc/nginx/sites-available/${MYDOMAIN}.conf"
+sed_replace_word "change_path" "${NEXTCLOUD_PATH_NAME}" "/etc/nginx/_nextcloud.conf"
 
 systemctl -q restart php$PHPVERSION7-fpm.service
 systemctl -q reload nginx.service
@@ -49,7 +49,7 @@ echo "NextcloudDBUser = ${NEXTCLOUD_USER}" >> /root/NeXt-Server-Buster/nextcloud
 echo "Database password = ${NEXTCLOUD_DB_PASS}" >> /root/NeXt-Server-Buster/nextcloud_login_data.txt
 echo "NextcloudDBName = ${NEXTCLOUD_DB_NAME}" >> /root/NeXt-Server-Buster/nextcloud_login_data.txt
 
-sed -i 's/NEXTCLOUD_IS_INSTALLED="0"/NEXTCLOUD_IS_INSTALLED="1"/' /root/NeXt-Server-Buster/configs/userconfig.cfg
+sed_replace_word "NEXTCLOUD_IS_INSTALLED="0"" "NEXTCLOUD_IS_INSTALLED="1"" "/root/NeXt-Server-Buster/configs/userconfig.cfg"
 echo "$NEXTCLOUD_PATH_NAME" >> /root/NeXt-Server-Buster/configs/blocked_paths.conf
 
 dialog_msg "Please save the shown login information on next page"

@@ -44,10 +44,10 @@ else
 fi
 cp wp-config-sample.php wp-config.php
 
-sed -i "s/wp_/${WORDPRESS_DB_PREFIX}_/g" wp-config.php
-sed -i "s/database_name_here/${WORDPRESS_DB_NAME}/g" wp-config.php
-sed -i "s/username_here/${WORDPRESS_USER}/g" wp-config.php
-sed -i "s/password_here/${WORDPRESS_DB_PASS}/g" wp-config.php
+sed_replace_word "wp_" "${WORDPRESS_DB_PREFIX}_" "wp-config.php"
+sed_replace_word "database_name_here" "${WORDPRESS_DB_NAME}" "wp-config.php"
+sed_replace_word "username_here" "${WORDPRESS_USER}" "wp-config.php"
+sed_replace_word "password_here" "${WORDPRESS_DB_PASS}" "wp-config.php"
 
 salts=$(curl -s https://api.wordpress.org/secret-key/1.1/salt/)
 while read -r salt; do
@@ -67,7 +67,7 @@ find . -type f -exec chmod 644 {} \;
 find . -type d -exec chmod 755 {} \;
 
 cp /root/NeXt-Server-Buster/addons/vhosts/_wordpress.conf /etc/nginx/_wordpress.conf
-sed -i "s/#include _wordpress.conf;/include _wordpress.conf;/g" /etc/nginx/sites-available/${MYDOMAIN}.conf
+sed_replace_word "#include _wordpress.conf;" "include _wordpress.conf;" "/etc/nginx/sites-available/${MYDOMAIN}.conf"
 
 systemctl -q restart php$PHPVERSION7-fpm.service
 systemctl restart nginx
@@ -86,7 +86,7 @@ echo "WordpressDBName = ${WORDPRESS_DB_NAME}" >> /root/NeXt-Server-Buster/wordpr
 echo "WordpressDBPassword = ${WORDPRESS_DB_PASS}" >> /root/NeXt-Server-Buster/wordpress_login_data.txt
 echo "WordpressScriptPath = ${WORDPRESS_PATH_NAME}" >> /root/NeXt-Server-Buster/wordpress_login_data.txt
 
-sed -i 's/WORDPRESS_IS_INSTALLED="0"/WORDPRESS_IS_INSTALLED="1"/' /root/NeXt-Server-Buster/configs/userconfig.cfg
+sed_replace_word "WORDPRESS_IS_INSTALLED="0"" "WORDPRESS_IS_INSTALLED="1"" "/root/NeXt-Server-Buster/configs/userconfig.cfg"
 echo "$WORDPRESS_PATH_NAME" >> /root/NeXt-Server-Buster/configs/blocked_paths.conf
 
 dialog_msg "Please save the shown login information on next page"

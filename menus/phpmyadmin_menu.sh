@@ -21,12 +21,12 @@ clear
 case $CHOICE in
 1)
 PHPMYADMIN_PATH_NAME="pma"
-sed -i 's/PHPMYADMIN_PATH_NAME="0"/PHPMYADMIN_PATH_NAME="'${PHPMYADMIN_PATH_NAME}'"/' /root/NeXt-Server-Buster/configs/userconfig.cfg
+sed_replace_word "PHPMYADMIN_PATH_NAME="0"" "PHPMYADMIN_PATH_NAME="'${PHPMYADMIN_PATH_NAME}'"" "/root/NeXt-Server-Buster/configs/userconfig.cfg"
 ;;
 
 2)
 PHPMYADMIN_PATH_NAME="phpmyadmin"
-sed -i 's/PHPMYADMIN_PATH_NAME="0"/PHPMYADMIN_PATH_NAME="'${PHPMYADMIN_PATH_NAME}'"/' /root/NeXt-Server-Buster/configs/userconfig.cfg
+sed_replace_word "PHPMYADMIN_PATH_NAME="0"" "PHPMYADMIN_PATH_NAME="'${PHPMYADMIN_PATH_NAME}'"" "/root/NeXt-Server-Buster/configs/userconfig.cfg"
 ;;
 
 3)
@@ -47,7 +47,7 @@ if [[ "$PHPMYADMIN_PATH_NAME" =~ ^[a-zA-Z0-9]+$ ]]; then
            dialog_msg "[ERROR] Your Phpmyadmin path ${PHPMYADMIN_PATH_NAME} is already used by the script, please choose another one!"
            dialog --clear
        else
-           sed -i 's/PHPMYADMIN_PATH_NAME="0"/PHPMYADMIN_PATH_NAME="'${PHPMYADMIN_PATH_NAME}'"/' /root/NeXt-Server-Buster/configs/userconfig.cfg
+           sed_replace_word "PHPMYADMIN_PATH_NAME="0"" "PHPMYADMIN_PATH_NAME="'${PHPMYADMIN_PATH_NAME}'"" "/root/NeXt-Server-Buster/configs/userconfig.cfg"
            break
        fi
     else

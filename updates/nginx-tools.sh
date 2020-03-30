@@ -139,7 +139,7 @@ update_nginx() {
   make -j $(nproc)
   make install
 
-  sed -i 's/NGINX_VERSION="'${NGINX_VERSION}'"/NGINX_VERSION="'${LATEST_NGINX_VERSION}'"/' /root/NeXt-Server-Buster/configs/versions.cfg
+  sed_replace_word "NGINX_VERSION="'${NGINX_VERSION}'"" "NGINX_VERSION="'${LATEST_NGINX_VERSION}'"" "/root/NeXt-Server-Buster/configs/versions.cfg"
   ##create case for failed update + restore old version value?
   check_nginx
   continue_or_exit
