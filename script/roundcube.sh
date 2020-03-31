@@ -30,7 +30,7 @@ mysql -u${ROUNDCUBE_USER} -p${ROUNDCUBE_DB_PASS} -h${MYSQL_HOSTNAME} ${ROUNDCUBE
 
 htpasswd -b /etc/nginx/htpasswd/.htpasswd ${ROUND_HTTPAUTH_USER} ${ROUND_HTTPAUTH_PASS}
 
-cp /root/NeXt-Server-Buster/configroundcube/config.inc.php /var/www/${MYDOMAIN}/public/webmail/config/config.inc.php
+cp /root/NeXt-Server-Buster/configs/roundcube/config.inc.php /var/www/${MYDOMAIN}/public/webmail/config/config.inc.php
 sed_replace_word "rcdbuser" "${ROUNDCUBE_USER}" "/var/www/${MYDOMAIN}/public/webmail/config/config.inc.php"
 sed_replace_word "rcdbpassword" "${ROUNDCUBE_DB_PASS}" "/var/www/${MYDOMAIN}/public/webmail/config/config.inc.php"
 sed_replace_word "rcdbname" "${ROUNDCUBE_DB_NAME}" "/var/www/${MYDOMAIN}/public/webmail/config/config.inc.php"
