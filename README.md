@@ -65,6 +65,11 @@ Install with [git]:
 - `cd /root/; apt update; apt install git -y; git clone https://github.com/shoujii/NeXt-Server-Buster; cd NeXt-Server-Buster; bash nxt.sh
 `
 
+Install dev mode [git]:
+(This will create a fake Let's Encrypt Cert, you won't run into the limition of weekly cert's)
+- `cd /root/; apt update; apt install git -y; git clone https://github.com/shoujii/NeXt-Server-Buster; cd NeXt-Server-Buster; touch dev.conf; bash nxt.sh
+`
+
 Read the [NeXt-Server Wiki](https://github.com/shoujii/NeXt-Server-Buster/wiki) for advanced information!
 
 ## What's included
