@@ -59,9 +59,9 @@ sed_replace_word "^OPEN_ICMP=.*" "OPEN_ICMP="1"" "/etc/arno-iptables-firewall/fi
 sed_replace_word "^#BLOCK_HOSTS_FILE=.*" "BLOCK_HOSTS_FILE="/etc/arno-iptables-firewall/blocked-hosts"" "/etc/arno-iptables-firewall/firewall.conf"
 
 if [[ ${USE_MAILSERVER} == '1' ]]; then
-   sed_replace_word "^OPEN_TCP=.*/OPEN_TCP=\"${SSH_PORT}, 25, 80, 110, 143, 443, 465, 587, 993, 995, 4000\"/" "/etc/arno-iptables-firewall/firewall.conf"
+   sed_replace_word "^OPEN_TCP=.*" "OPEN_TCP="${SSH_PORT}, 25, 80, 110, 143, 443, 465, 587, 993, 995, 4000"" "/etc/arno-iptables-firewall/firewall.conf"
 else
-   sed_replace_word "^OPEN_TCP=.*/OPEN_TCP=\"${SSH_PORT}, 80, 443, 4000\"/" "/etc/arno-iptables-firewall/firewall.conf"
+   sed_replace_word "^OPEN_TCP=.*" "OPEN_TCP="${SSH_PORT}, 80, 443, 4000"" "/etc/arno-iptables-firewall/firewall.conf"
 fi
 
 sed_replace_word "^OPEN_UDP=.*" "OPEN_UDP="25, 80, 110, 143, 443, 465, 587, 993, 995"" "/etc/arno-iptables-firewall/firewall.conf"
