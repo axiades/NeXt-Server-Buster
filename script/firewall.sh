@@ -54,7 +54,7 @@ INTERFACE=$(ip route get 9.9.9.9 | head -1 | cut -d' ' -f5)
 sed_replace_word "^EXT_IF=.*" "EXT_IF=\"${INTERFACE}"\" "/etc/arno-iptables-firewall/firewall.conf"
 
 if [[ ${USE_MAILSERVER} == '1' ]]; then
-   sed_replace_word "^OPEN_TCP=.*" "OPEN_TCP=\"${SSH_PORT}', 25, 80, 110, 143, 443, 465, 587, 993, 995, 4000"\" "/etc/arno-iptables-firewall/firewall.conf"
+   sed_replace_word "^OPEN_TCP=.*" "OPEN_TCP=\"${SSH_PORT}, 25, 80, 110, 143, 443, 465, 587, 993, 995, 4000"\" "/etc/arno-iptables-firewall/firewall.conf"
 else
    sed_replace_word "^OPEN_TCP=.*" "OPEN_TCP=\"${SSH_PORT}, 80, 443, 4000"\" "/etc/arno-iptables-firewall/firewall.conf"
 fi
