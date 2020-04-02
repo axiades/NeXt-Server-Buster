@@ -19,7 +19,7 @@ rm -rf /etc/php/$PHPVERSION7/mods-available/20-apcu.ini
 
 #überarbeiten
 cp /root/NeXt-Server-Buster/configs/php/apcu.ini /etc/php/$PHPVERSION7/mods-available/apcu.ini
-sed_replace_word "^expose_php = On" "expose_php = Off" "/etc/php/$PHPVERSION7/cli/php.ini"
+sed_replace_word "^expose_php = \"On"\" "expose_php = \"Off"\" "/etc/php/$PHPVERSION7/cli/php.ini"
 
 ln -s /etc/php/$PHPVERSION7/mods-available/apcu.ini /etc/php/$PHPVERSION7/mods-available/20-apcu.ini
 
