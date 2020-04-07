@@ -1,24 +1,29 @@
-#! /bin/sh
+#!/bin/sh
 ### BEGIN INIT INFO
-# Provides:         ts3server
-# Required-Start: 	"'$local_fs $network'"
-# Required-Stop:	"'$local_fs $network'"
-# Default-Start: 	2 3 4 5
-# Default-Stop: 	0 1 6
-# Description:      TS 3 Server
+# Provides:         teamspeak3
+# Required-Start:     $local_fs $network
+# Required-Stop:    $local_fs $network
+# Default-Start:     2 3 4 5
+# Default-Stop:     0 1 6
+# Description:         Teamspeak 3 Server
 ### END INIT INFO
-
-case "'"$1"'" in
+# INIT Script by wiki.xprog.de
+######################################
+case "$1" in
 start)
-echo "'"Starte Teamspeak 3 Server ... "'"
-su ts3user -c "'"/usr/local/ts3user/ts3server/ts3server_startscript.sh start"'"
+su ts3user -c "/usr/local/ts3user/ts3server/ts3server_startscript.sh start"
 ;;
 stop)
-echo "'"Beende Teamspeak 3 Server ..."'"
-su ts3user -c "'"/usr/local/ts3user/ts3server/ts3server_startscript.sh stop"'"
+su ts3user -c "/usr/local/ts3user/ts3server/ts3server_startscript.sh stop"
+;;
+restart)
+su ts3user -c "/usr/local/ts3user/ts3server/ts3server_startscript.sh restart"
+;;
+status)
+su ts3user -c "/usr/local/ts3user/ts3server/ts3server_startscript.sh status"
 ;;
 *)
-echo "'"Sie können folgende Befehle nutzen: TS3 starten: /etc/init.d/ts3server start TS3 stoppen: /etc/init.d/ts3server stop"'" > /usr/local/ts3user/ts3server/ts3befehle.txt
+echo "Usage: {start|stop|restart|status}" >&2
 exit 1
 ;;
 esac

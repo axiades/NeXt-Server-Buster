@@ -9,7 +9,6 @@ install_packages "sudo"
 
 adduser ts3user --gecos "" --no-create-home --disabled-password
 mkdir -p /usr/local/ts3user
-chown ts3user /usr/local/ts3user
 
 cd /usr/local/ts3user
 wget_tar "https://files.teamspeak-services.com/releases/server/${TEAMSPEAK_VERSION}/teamspeak3-server_linux_amd64-${TEAMSPEAK_VERSION}.tar.bz2"
@@ -17,8 +16,6 @@ tar -xjf teamspeak3-server_linux*.tar.bz2
 mkdir -p /usr/local/ts3user/ts3server/
 cp -r -u /usr/local/ts3user/teamspeak3-server_linux_amd64/* /usr/local/ts3user/ts3server/
 rm -r /usr/local/ts3user/teamspeak3-server_linux_amd64/
-
-chown -R ts3user /usr/local/ts3user/ts3server
 
 touch /root/NeXt-Server-Buster/teamspeak3_login_data.txt
 touch /usr/local/ts3user/ts3server/.ts3server_license_accepted
@@ -28,6 +25,9 @@ cp /root/NeXt-Server-Buster/addons/configs/ts3server /etc/init.d/ts3server
 
 chmod 755 /etc/init.d/ts3server
 update-rc.d ts3server defaults
+chown ts3user /usr/local/ts3user
+chown -R ts3user /usr/local/ts3user/ts3server
+
 /etc/init.d/ts3server start
 
 TS3_PORTS_TCP="2008, 10011, 30033, 41144"
