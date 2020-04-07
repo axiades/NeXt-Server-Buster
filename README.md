@@ -66,7 +66,9 @@ Install with [git]:
 `
 
 Install dev mode [git]:
+
 DO NOT USE FOR PRODUCTION!
+
 The Mailserver and other features won't work!
 (This will create a fake Let's Encrypt Cert, you won't run into the limition of weekly cert's)
 - `cd /root/; apt update; apt install git -y; git clone https://github.com/shoujii/NeXt-Server-Buster; cd NeXt-Server-Buster; touch dev.conf; bash nxt.sh
