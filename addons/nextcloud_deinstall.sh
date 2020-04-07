@@ -21,6 +21,7 @@ sed_replace_word "include _nextcloud.conf;" "#include _nextcloud.conf;" "/etc/ng
 systemctl -q restart php$PHPVERSION7-fpm.service
 systemctl -q restart nginx.service
 
-sed_replace_word "NEXTCLOUD_PATH_NAME=".*"" "NEXTCLOUD_PATH_NAME="0"" "/root/NeXt-Server-Buster/configs/userconfig.cfg"
-sed_replace_word "NEXTCLOUD_IS_INSTALLED="1"" "NEXTCLOUD_IS_INSTALLED="0"" "/root/NeXt-Server-Buster/configs/userconfig.cfg"
+sed_replace_word "$NEXTCLOUD_PATH_NAME" "" "/root/NeXt-Server-Buster/configs/blocked_paths.conf"
+sed_replace_word "NEXTCLOUD_PATH_NAME=\".*"\" "NEXTCLOUD_PATH_NAME=\"0"\" "/root/NeXt-Server-Buster/configs/userconfig.cfg"
+sed_replace_word "NEXTCLOUD_IS_INSTALLED=\"1"\" "NEXTCLOUD_IS_INSTALLED=\"0"\" "/root/NeXt-Server-Buster/configs/userconfig.cfg"
 }

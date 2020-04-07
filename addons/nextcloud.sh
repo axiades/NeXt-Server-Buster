@@ -49,7 +49,7 @@ echo "NextcloudDBUser = ${NEXTCLOUD_USER}" >> /root/NeXt-Server-Buster/nextcloud
 echo "Database password = ${NEXTCLOUD_DB_PASS}" >> /root/NeXt-Server-Buster/nextcloud_login_data.txt
 echo "NextcloudDBName = ${NEXTCLOUD_DB_NAME}" >> /root/NeXt-Server-Buster/nextcloud_login_data.txt
 
-sed_replace_word "NEXTCLOUD_IS_INSTALLED="0"" "NEXTCLOUD_IS_INSTALLED="1"" "/root/NeXt-Server-Buster/configs/userconfig.cfg"
+sed_replace_word "NEXTCLOUD_IS_INSTALLED=\"0"\" "NEXTCLOUD_IS_INSTALLED=\"1"\" "/root/NeXt-Server-Buster/configs/userconfig.cfg"
 echo "$NEXTCLOUD_PATH_NAME" >> /root/NeXt-Server-Buster/configs/blocked_paths.conf
 
 dialog_msg "Please save the shown login information on next page"

@@ -29,6 +29,7 @@ sed_replace_word "include _wordpress.conf;" "#include _wordpress.conf;" "/etc/ng
 systemctl -q restart php$PHPVERSION7-fpm.service
 systemctl -q restart nginx.service
 
-sed_replace_word "WORDPRESS_PATH_NAME=".*"" "WORDPRESS_PATH_NAME="0"" "/root/NeXt-Server-Buster/configs/userconfig.cfg"
-sed_replace_word "WORDPRESS_IS_INSTALLED="1"" "WORDPRESS_IS_INSTALLED="0"" "/root/NeXt-Server-Buster/configs/userconfig.cfg"
+sed_replace_word "$WORDPRESS_PATH_NAME" "" "/root/NeXt-Server-Buster/configs/blocked_paths.conf"
+sed_replace_word "WORDPRESS_PATH_NAME=\".*"\" "WORDPRESS_PATH_NAME=\"0"\" "/root/NeXt-Server-Buster/configs/userconfig.cfg"
+sed_replace_word "WORDPRESS_IS_INSTALLED=\"1"\" "WORDPRESS_IS_INSTALLED=\"0"\" "/root/NeXt-Server-Buster/configs/userconfig.cfg"
 }

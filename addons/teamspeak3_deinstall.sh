@@ -21,5 +21,5 @@ sed_replace_word "9987, " "" "/etc/arno-iptables-firewall/firewall.conf"
 
 systemctl force-reload arno-iptables-firewall.service
 
-sed_replace_word "TS3_IS_INSTALLED="1"" "TS3_IS_INSTALLED="0"" "/root/NeXt-Server-Buster/configs/userconfig.cfg"
+sed_replace_word "TS3_IS_INSTALLED=\"1"\" "TS3_IS_INSTALLED=\"0"\" "/root/NeXt-Server-Buster/configs/userconfig.cfg"
 }

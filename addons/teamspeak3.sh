@@ -47,7 +47,7 @@ echo "--------------------------------------------" >> /root/NeXt-Server-Buster/
 echo "TS3 Server Login = Look at: ts3serverdata.txt in the NeXt-Server Folder" >> /root/NeXt-Server-Buster/teamspeak3_login_data.txt
 echo "TS3 Server commands = /etc/init.d/ts3server start and /etc/init.d/ts3server stop" >> /root/NeXt-Server-Buster/teamspeak3_login_data.txt
 
-sed_replace_word "TS3_IS_INSTALLED="0"" "TS3_IS_INSTALLED="1"" "/root/NeXt-Server-Buster/configs/userconfig.cfg"
+sed_replace_word "TS3_IS_INSTALLED=\"0"\" "TS3_IS_INSTALLED=\"1"\" "/root/NeXt-Server-Buster/configs/userconfig.cfg"
 
 dialog_msg "Please save the shown login information on next page"
 cat /root/NeXt-Server-Buster/teamspeak3_login_data.txt

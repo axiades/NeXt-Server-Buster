@@ -31,7 +31,7 @@ echo "Munin Address: ${MYDOMAIN}/${MUNIN_PATH_NAME}/" >> /root/NeXt-Server-Buste
 echo "MUNIN_HTTPAUTH_USER = ${MUNIN_HTTPAUTH_USER}" >> /root/NeXt-Server-Buster/munin_login_data.txt
 echo "MUNIN_HTTPAUTH_PASS = ${MUNIN_HTTPAUTH_PASS}" >> /root/NeXt-Server-Buster/munin_login_data.txt
 
-sed_replace_word "MUNIN_IS_INSTALLED="0"" "MUNIN_IS_INSTALLED="1"" "/root/NeXt-Server-Buster/configs/userconfig.cfg"
+sed_replace_word "MUNIN_IS_INSTALLED=\"0"\" "MUNIN_IS_INSTALLED=\"1"\" "/root/NeXt-Server-Buster/configs/userconfig.cfg"
 echo "$MUNIN_PATH_NAME" >> /root/NeXt-Server-Buster/configs/blocked_paths.conf
 
 dialog_msg "Please save the shown login information on next page"

@@ -20,6 +20,7 @@ cd /var/www/${MYDOMAIN}/public/
 
 wget_tar "https://github.com/phpmyadmin/phpmyadmin/archive/RELEASE_${PMA_VERSION}.zip"
 unzip RELEASE_${PMA_VERSION}.zip -d /var/www/${MYDOMAIN}/public/${PHPMYADMIN_PATH_NAME}
+rm RELEASE_${PMA_VERSION}.zip
 cd /var/www/${MYDOMAIN}/public/${PHPMYADMIN_PATH_NAME}
 mv phpmyadmin-RELEASE_${PMA_VERSION}/* .
 composer update --no-dev

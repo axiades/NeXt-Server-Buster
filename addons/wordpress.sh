@@ -86,7 +86,7 @@ echo "WordpressDBName = ${WORDPRESS_DB_NAME}" >> /root/NeXt-Server-Buster/wordpr
 echo "WordpressDBPassword = ${WORDPRESS_DB_PASS}" >> /root/NeXt-Server-Buster/wordpress_login_data.txt
 echo "WordpressScriptPath = ${WORDPRESS_PATH_NAME}" >> /root/NeXt-Server-Buster/wordpress_login_data.txt
 
-sed_replace_word "WORDPRESS_IS_INSTALLED="0"" "WORDPRESS_IS_INSTALLED="1"" "/root/NeXt-Server-Buster/configs/userconfig.cfg"
+sed_replace_word "WORDPRESS_IS_INSTALLED=\"0"\" "WORDPRESS_IS_INSTALLED=\"1"\" "/root/NeXt-Server-Buster/configs/userconfig.cfg"
 echo "$WORDPRESS_PATH_NAME" >> /root/NeXt-Server-Buster/configs/blocked_paths.conf
 
 dialog_msg "Please save the shown login information on next page"

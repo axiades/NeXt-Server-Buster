@@ -22,12 +22,12 @@ clear
 case $CHOICE in
 1)
 WORDPRESS_PATH_NAME="wordpress"
-sed_replace_word "WORDPRESS_PATH_NAME="0"" "WORDPRESS_PATH_NAME="'${WORDPRESS_PATH_NAME}'"" "/root/NeXt-Server-Buster/configs/userconfig.cfg"
+sed_replace_word "WORDPRESS_PATH_NAME=\"0"\" "WORDPRESS_PATH_NAME=\"${WORDPRESS_PATH_NAME}"\" "/root/NeXt-Server-Buster/configs/userconfig.cfg"
 ;;
 
 2)
 WORDPRESS_PATH_NAME="blog"
-sed_replace_word "WORDPRESS_PATH_NAME="0"" "WORDPRESS_PATH_NAME="'${WORDPRESS_PATH_NAME}'"" "/root/NeXt-Server-Buster/configs/userconfig.cfg"
+sed_replace_word "WORDPRESS_PATH_NAME=\"0"\" "WORDPRESS_PATH_NAME=\"${WORDPRESS_PATH_NAME}"\" "/root/NeXt-Server-Buster/configs/userconfig.cfg"
 ;;
 
 3)
@@ -48,7 +48,7 @@ if [[ "$WORDPRESS_PATH_NAME" =~ ^[a-zA-Z0-9]+$ ]]; then
            dialog_msg "[ERROR] Your Wordpress path ${WORDPRESS_PATH_NAME} is already used by the script, please choose another one!"
            dialog --clear
        else
-           sed_replace_word "WORDPRESS_PATH_NAME="0"" "WORDPRESS_PATH_NAME="'${WORDPRESS_PATH_NAME}'"" "/root/NeXt-Server-Buster/configs/userconfig.cfg"
+           sed_replace_word "WORDPRESS_PATH_NAME=\"0"\" "WORDPRESS_PATH_NAME=\"${WORDPRESS_PATH_NAME}"\" "/root/NeXt-Server-Buster/configs/userconfig.cfg"
            break
        fi
     else
@@ -72,7 +72,7 @@ clear
 case $CHOICE in
     1)
     WORDPRESS_PATH_NAME="root"
-    sed_replace_word "WORDPRESS_PATH_NAME="0"" "WORDPRESS_PATH_NAME="'${WORDPRESS_PATH_NAME}'"" "/root/NeXt-Server-Buster/configs/userconfig.cfg"
+    sed_replace_word "WORDPRESS_PATH_NAME=\"0"\" "WORDPRESS_PATH_NAME=\"${WORDPRESS_PATH_NAME}"\" "/root/NeXt-Server-Buster/configs/userconfig.cfg"
     ;;
 
     2)

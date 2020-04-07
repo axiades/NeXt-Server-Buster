@@ -21,12 +21,12 @@ clear
 case $CHOICE in
 1)
 NEXTCLOUD_PATH_NAME="nextcloud"
-sed_replace_word "NEXTCLOUD_PATH_NAME="0"" "NEXTCLOUD_PATH_NAME="'${NEXTCLOUD_PATH_NAME}'"" "/root/NeXt-Server-Buster/configs/userconfig.cfg"
+sed_replace_word "NEXTCLOUD_PATH_NAME=\"0"\" "NEXTCLOUD_PATH_NAME=\"${NEXTCLOUD_PATH_NAME}"\" "/root/NeXt-Server-Buster/configs/userconfig.cfg"
 ;;
 
 2)
 NEXTCLOUD_PATH_NAME="cloud"
-sed_replace_word "NEXTCLOUD_PATH_NAME="0"" "NEXTCLOUD_PATH_NAME="'${NEXTCLOUD_PATH_NAME}'"" "/root/NeXt-Server-Buster/configs/userconfig.cfg"
+sed_replace_word "NEXTCLOUD_PATH_NAME=\"0"\" "NEXTCLOUD_PATH_NAME=\"${NEXTCLOUD_PATH_NAME}"\" "/root/NeXt-Server-Buster/configs/userconfig.cfg"
 ;;
 
 3)
@@ -47,7 +47,7 @@ if [[ "$NEXTCLOUD_PATH_NAME" =~ ^[a-zA-Z0-9]+$ ]]; then
            dialog_msg "[ERROR] Your Nextcloud path ${NEXTCLOUD_PATH_NAME} is already used by the script, please choose another one!"
            dialog --clear
       else
-          sed_replace_word "NEXTCLOUD_PATH_NAME="0"" "NEXTCLOUD_PATH_NAME="'${NEXTCLOUD_PATH_NAME}'"" "/root/NeXt-Server-Buster/configs/userconfig.cfg"
+          sed_replace_word "NEXTCLOUD_PATH_NAME=\"0"\" "NEXTCLOUD_PATH_NAME=\"${NEXTCLOUD_PATH_NAME}"\" "/root/NeXt-Server-Buster/configs/userconfig.cfg"
           break
       fi
     else
