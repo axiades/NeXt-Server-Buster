@@ -16,7 +16,7 @@ progress_gauge "0" "Checking your system..."
 set_logs
 prerequisites
 setipaddrvars
-check_system
+check_system_before_start
 
 confighelper_userconfig
 

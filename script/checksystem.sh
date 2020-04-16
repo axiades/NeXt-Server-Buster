@@ -1,7 +1,7 @@
 #!/bin/bash
 #Please check the license provided with the script!
 
-check_system() {
+check_system_before_start() {
 
 trap error_exit ERR
 
