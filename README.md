@@ -39,7 +39,7 @@ A vServer with at least:
 - 1 CPU Core
 - 2 GB RAM
 - KVM virtualized server (Openvz [...] will not work!)
-- The latest "clean" Debian 10.x minimal installed on the server (with all updates!)
+- The latest "clean" Ubuntu 20.04 minimal installed on the server (with all updates!)
 - rDNS set to the desired Domain
 - root user access
 - 9 GB free disk space
