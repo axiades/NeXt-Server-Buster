@@ -108,48 +108,6 @@ if [ ${CHECKRDNS} != mail.${MYDOMAIN} ] | [ ${CHECKRDNS} != mail.${MYDOMAIN}. ];
     exit
 fi
 
-# --- IP Adress ---
-CHOICE_HEIGHT=3
-MENU="What IP Mode do you want to use?:"
-OPTIONS=(1 "IPv4 only (Standard)" 
-         2 "Ipv4 and IPv6 dual stack"
-         3 "IPv6 only")
-menu
-clear
-case $CHOICE in
-1)
-    IPV4_ONLY="1"
-    IP_DUAL="0"
-    IPV6_ONLY="0"
-;;
-2)
-    IPV4_ONLY="0"
-    IP_DUAL="1"
-    IPV6_ONLY="0"
-;;
-3)
-    IPV4_ONLY="0"
-    IP_DUAL="0"
-    IPV6_ONLY="1"
-;;
-esac
-
-if [[ ${IPV6_ONLY} == '1' ]] || [[ ${IP_DUAL} == '1' ]]; then
-    IPV6ADRINPUT=$(dialog --clear \
-                          --backtitle "$BACKTITLE" \
-                          --inputbox "Enter your IPv6 Address: (Example: 2a03:4000:2:11c5::1)" \
-                          $HEIGHT $WIDTH \
-                          3>&1 1>&2 2>&3 3>&- \
-                          )
-
-    IPV6NETINPUT=$(dialog --clear \
-                          --backtitle "$BACKTITLE" \
-                          --inputbox "Enter your IPv6 Netmask: (Example: 64)" \
-                          $HEIGHT $WIDTH \
-                          3>&1 1>&2 2>&3 3>&- \
-                          )
-fi
-
 # --- Mailserver ---
 CHOICE_HEIGHT=2
 MENU="Do you want to use the Mailserver?:"
@@ -171,7 +129,6 @@ esac
 
 PHPVERSION7="7.3"
 NXT_SYSTEM_EMAIL="admin@${MYDOMAIN}"
-IPV6NETINPUT="fe80::1"
 CONFIG_COMPLETED="1"
 
 GIT_LOCAL_FILES_HEAD=$(git rev-parse --short HEAD)
