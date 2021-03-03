@@ -7,32 +7,6 @@ trap error_exit ERR
 
 source /root/NeXt-Server-Buster/configs/sources.cfg
 
-rm /etc/network/interfaces
-if [[ ${IPV4_ONLY} = "1" ]]; then
-  cp -f /root/NeXt-Server-Buster/configs/IPv4.interface /etc/network/interfaces
-  sed_replace_word "INTERFACENAME" "${INTERFACE}" "/etc/network/interfaces"
-  sed_replace_word "IPV4ADDR" "${IPADR}" "/etc/network/interfaces"
-  sed_replace_word "IPV4GATE" "${IPV4GAT}" "/etc/network/interfaces"
-fi
-
-if [[ ${IPV6_ONLY} = "1" ]]; then
-  cp -f /root/NeXt-Server-Buster/configs/IPv6.interface /etc/network/interfaces
-  sed_replace_word "INTERFACENAME" "${INTERFACE}" "/etc/network/interfaces"
-  sed_replace_word "IPV6ADDR" "${IP6ADR}" "/etc/network/interfaces"
-  sed_replace_word "IPV6GATE" "${IPV6GAT}" "/etc/network/interfaces"
-  sed_replace_word "IPV6NET" "${IPV6NET}" "/etc/network/interfaces"
-fi
-
-if [[ ${IP_DUAL} = "1" ]]; then
-  cp -f /root/NeXt-Server-Buster/configs/IPv4-IPv6.interface /etc/network/interfaces
-  sed_replace_word "INTERFACENAME" "${INTERFACE}" "/etc/network/interfaces"
-  sed_replace_word "IPV4ADDR" "${IPADR}" "/etc/network/interfaces"
-  sed_replace_word "IPV4GATE" "${IPV4GAT}" "/etc/network/interfaces"
-  sed_replace_word "IPV6ADDR" "${IP6ADR}" "/etc/network/interfaces"
-  sed_replace_word "IPV6GATE" "${IPV6GAT}" "/etc/network/interfaces"
-  sed_replace_word "IPV6NET" "${IPV6NET}" "/etc/network/interfaces"
-fi
-
 hostnamectl set-hostname --static mail
 
 rm /etc/hosts
@@ -56,21 +30,22 @@ sed_replace_word "EMPTY_TIMEZONE" "${TIMEZONE_DETECTED}" "/root/NeXt-Server-Bust
 rm /etc/apt/sources.list
 cat > /etc/apt/sources.list <<END
 #------------------------------------------------------------------------------#
-#                   OFFICIAL DEBIAN REPOS                                      #
+#                            OFFICIAL UBUNTU REPOS                             #
 #------------------------------------------------------------------------------#
 
-###### Debian Main Repos
-deb http://deb.debian.org/debian/ buster main contrib non-free
-deb-src http://deb.debian.org/debian/ buster main contrib non-free
+###### Ubuntu Main Repos
+deb http://de.archive.ubuntu.com/ubuntu/ focal main restricted universe multiverse 
+deb-src http://de.archive.ubuntu.com/ubuntu/ focal main restricted universe multiverse 
 
-deb http://security.debian.org/ buster/updates main contrib non-free
-deb-src http://security.debian.org/ buster/updates main contrib non-free
-
-deb http://deb.debian.org/debian/ buster-updates main contrib non-free
-deb-src http://deb.debian.org/debian/ buster-updates main contrib non-free
-
-deb http://deb.debian.org/debian/ buster-backports main contrib non-free
-deb-src http://deb.debian.org/debian/ buster-backports main contrib non-free
+###### Ubuntu Update Repos
+deb http://de.archive.ubuntu.com/ubuntu/ focal-security main restricted universe multiverse 
+deb http://de.archive.ubuntu.com/ubuntu/ focal-updates main restricted universe multiverse 
+deb http://de.archive.ubuntu.com/ubuntu/ focal-proposed main restricted universe multiverse 
+deb http://de.archive.ubuntu.com/ubuntu/ focal-backports main restricted universe multiverse 
+deb-src http://de.archive.ubuntu.com/ubuntu/ focal-security main restricted universe multiverse 
+deb-src http://de.archive.ubuntu.com/ubuntu/ focal-updates main restricted universe multiverse 
+deb-src http://de.archive.ubuntu.com/ubuntu/ focal-proposed main restricted universe multiverse 
+deb-src http://de.archive.ubuntu.com/ubuntu/ focal-backports main restricted universe multiverse 
 END
 
 apt update -y >/dev/null 2>&1
