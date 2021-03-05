@@ -1,37 +1,3 @@
-<p align="center">
-  <a href="https://nxtsrv.de/">
-    <img src="https://raw.githubusercontent.com/shoujii/NeXt-Server-Buster/master/includes/NeXt-logo.jpg">
-  </a>
-
-  <h3 align="center">NeXt-Server-Buster</h3>
-
-  <p align="center">
-    Debian Buster Version of NeXt-Server Script.
-    <br>
-    <a href="https://github.com/shoujii/NeXt-Server-Buster/wiki"><strong>NeXt-Server Wiki »</strong></a>
-    <br>
-    <br>
-    <a href="https://github.com/shoujii/NeXt-Server-Buster/issues/new">Report bug</a>
-    ·
-    <a href="https://nxtsrv.de/">Blog</a>
-  </p>
-</p>
-
-<br>
-
-## Table of contents
-
-- [What you need](#what-you-need)
-- [Quick start](#quick-start)
-- [What's included](#whats-included)
-- [Bugs and feature requests](#bugs-and-feature-requests)
-- [Documentation](#documentation)
-- [Contributing](#contributing)
-- [Creators](#creators)
-- [Thanks](#thanks)
-- [Used software](#used-software)
-- [Copyright and license](#copyright-and-license)
-
 ## What you need:
 
 A vServer with at least:
@@ -62,7 +28,7 @@ Login with:
 otherwise the script will throw multiple errors!
 
 Install with [git]:
-- `cd /root/; apt update; apt install git -y; git clone https://github.com/axiades/Next-Server-Buster; cd NeXt-Server-Buster; bash nxt.sh
+- `cd /root/; apt update; apt install git -y; git clone https://github.com/axiades/Perfectrootserver; cd Perfectrootserver; bash nxt.sh
 `
 
 Install dev mode [git]:
@@ -71,131 +37,9 @@ DO NOT USE FOR PRODUCTION!
 
 The Mailserver and other features won't work!
 (This will create a fake Let's Encrypt Cert, you won't run into the limition of weekly cert's)
-- `cd /root/; apt update; apt install git -y; git clone https://github.com/axiades/Next-Server-Buster; cd NeXt-Server-Buster; touch dev.conf; bash nxt.sh
-`
-
-Read the [NeXt-Server Wiki](https://github.com/shoujii/NeXt-Server-Buster/wiki) for advanced information!
-
-## What's included
-
-Within the cloned repository you'll find the following directories and files, grouping the different installation files and configs in a logic structure. You'll see something like this:
-
-```
-NeXt-Server-Buster/
-    ├── .github/
-    │   ├── issue_template.md
-    │
-    ├── addons/
-    │
-    │   ├── vhosts/
-        │   ├── [Various Vhost .conf files]
-        │
-    │   ├── [Various Addon .sh files]
-    │
-    ├── checks/
-    │   ├── [Various check .sh files]
-    │
-    ├── configs/
-    │   ├── arno-iptables-firewall/
-    │   ├── dovecot/
-    │   ├── fail2ban/
-    │   ├── mailserver/
-    │   ├── nginx/
-    │   ├── php/
-    │   ├── pma/
-    │   ├── postfix/
-    │   ├── rspamd/  
-    │   ├── sshd_config  
-    │   ├── userconfig.cfg
-    │   ├── versions.cfg
-    │
-    ├── cronjobs/
-    │   ├── backupscript
-    │
-    ├── includes/
-    │   ├── NeXt-logo.jpg
-    │   ├── dns_settings.txt
-    │   ├── issue
-    │   ├── issue.net
-    │
-    ├── logs/
-    │   ├── error.log
-    │   ├── failed_checks.log
-    │   ├── main.log
-    │   ├── make.log
-    │   ├── make_error.log   
-    │
-    ├── menus/
-    │   ├── [Various menu .sh files]
-    │
-    ├── script/
-    │   ├── [Various script .sh files (main part of the script)]
-    │
-    ├── updates/
-    │   ├── [Various service update .sh files]
-    │
-    ├── LICENSE
-    ├── README.md
-    ├── confighelper.sh
-    ├── dns_settings.txt
-    ├── install.sh
-    ├── login_information.txt
-    ├── nxt.sh
-    ├── update_script.sh
-```
-
-## Bugs and feature requests
-
-Have a bug or a feature request? Please first read the [issue guidelines]() and search for existing and closed issues. If your problem or idea is not addressed yet, [please open a new issue](https://github.com/shoujii/NeXt-Server-Buster/issues/new).
-
-
-## Documentation
-
-The NeXt-Server documentation, included in this repository in the docs directory, is also available on the [NeXt-Server Wiki](https://github.com/shoujii/NeXt-Server-Buster/wiki).
-
-## Contributing
-
-Please read through our [contributing guidelines](https://github.com/twbs/bootstrap/blob/master/CONTRIBUTING.md). Included are directions for opening issues, coding standards, and notes on development.
-
-## Creators
-
-**Marcel Gössel**
-
-- <https://github.com/shoujii>
-
-**René Wurch**
-
-- <https://github.com/BoBBer446>
-
-** Flo**
-
-- <https://github.com/flo-ku>
-
-## Thanks
-
-Thanks to [Thomas Leister] and his awesome Mailserver Setup, we're using in this Script!
-(https://thomas-leister.de/mailserver-debian-stretch/)
-
-
-Also thanks to [Michael Thies], for the managevmail script, used for the Mailserver.
-(https://github.com/mhthies/managevmail)
-
-A big thanks to [George Liu], for some great lines of code!.
-(https://github.com/centminmod)
-
-## Used software
-- Nginx                      <https://github.com/nginx/nginx>
-- Openssh                    <https://github.com/openssh/openssh-portable>
-- Openssl                    <https://github.com/openssl/openssl>
-- Dovecot                    <https://github.com/dovecot/core>
-- Postfix                    <http://www.postfix.org/>
-- fail2ban                   <https://github.com/fail2ban/fail2ban>
-- Arno's iptables firewall   <https://github.com/arno-iptables-firewall/aif>
-- MariaDB                    <https://github.com/MariaDB/server>
-- acme.sh                    <https://github.com/Neilpang/acme.sh>
-- unbound                    <https://github.com/NLnetLabs/unbound>
+- `cd /root/; apt update; apt install git -y; git clone https://github.com/axiades/Perfectrootserver; cd Perfectrootserver; touch dev.conf; bash nxt.sh
 
 ## Copyright and license
 
-Code and documentation copyright 2017-2020 the [NeXt-Server-Buster Authors](https://github.com/shoujii/NeXt-Server-Buster/graphs/contributors)
-Code released under the [GNU General Public License v3.0](https://github.com/shoujii/NeXt-Server-Buster/blob/master/LICENSE).
+Code and documentation copyright 2017-2020 the [Perfectrootserver Authors](https://github.com/axiades/Perfectrootserver/graphs/contributors)
+Code released under the [GNU General Public License v3.0](https://github.com/axiades/Perfectrootserver/blob/master/LICENSE).
