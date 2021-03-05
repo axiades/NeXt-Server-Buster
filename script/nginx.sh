@@ -94,6 +94,5 @@ sed_replace_word "MYDOMAIN" "${MYDOMAIN}" "/etc/nginx/_pagespeed.conf"
 chown -R www-data:www-data /var/www/${MYDOMAIN}/public
 ln -s /etc/nginx/sites-available/${MYDOMAIN}.conf /etc/nginx/sites-enabled/${MYDOMAIN}.conf
 
-cp /root/Perfectrootserver/includes/NeXt-logo.jpg /var/www/${MYDOMAIN}/public/NeXt-logo.jpg
 cp /root/Perfectrootserver/configs/nginx/index.html /var/www/${MYDOMAIN}/public/index.html
 }
