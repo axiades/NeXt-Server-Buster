@@ -3,13 +3,13 @@
 
 menu_options_firewall() {
 
-source /root/NeXt-Server-Buster/configs/sources.cfg
+source /root/Perfectrootserver/configs/sources.cfg
 
 HEIGHT=40
 WIDTH=80
 CHOICE_HEIGHT=7
-BACKTITLE="NeXt Server"
-TITLE="NeXt Server"
+BACKTITLE="Perfectrootserver"
+TITLE="Perfectrootserver"
 MENU="Choose one of the following options:"
 
 OPTIONS=(1 "Open TCP Port"
