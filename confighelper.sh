@@ -4,13 +4,13 @@
 confighelper_userconfig() {
 
 # --- GLOBAL MENU VARIABLES ---
-BACKTITLE="NeXt Server Installation"
-TITLE="NeXt Server Installation"
+BACKTITLE="Perfectrootserver Installation"
+TITLE="Perfectrootserver Installation"
 HEIGHT=40
 WIDTH=80
 
 # --- MYDOMAIN ---
-source /root/NeXt-Server-Buster/configs/sources.cfg
+source /root/Perfectrootserver/configs/sources.cfg
 get_domain
 CHECK_DOMAIN_LENGTH=`echo -n ${DETECTED_DOMAIN} | wc -m`
 
@@ -64,12 +64,12 @@ fi
 
 # --- DNS Check ---
 server_ip=$(ip route get 1.1.1.1 | awk '/1.1.1.1/ {print $(NF-2)}')
-sed_replace_word "server_ip" "$server_ip" "/root/NeXt-Server-Buster/dns_settings.txt"
-sed_replace_word "yourdomain.com" "$MYDOMAIN" "/root/NeXt-Server-Buster/dns_settings.txt"
-dialog --title "DNS Settings" --tab-correct --exit-label "ok" --textbox /root/NeXt-Server-Buster/dns_settings.txt 50 200
+sed_replace_word "server_ip" "$server_ip" "/root/Perfectrootserver/dns_settings.txt"
+sed_replace_word "yourdomain.com" "$MYDOMAIN" "/root/Perfectrootserver/dns_settings.txt"
+dialog --title "DNS Settings" --tab-correct --exit-label "ok" --textbox /root/Perfectrootserver/dns_settings.txt 50 200
 
-BACKTITLE="NeXt Server Installation"
-TITLE="NeXt Server Installation"
+BACKTITLE="Perfectrootserver Installation"
+TITLE="Perfectrootserver Installation"
 HEIGHT=15
 WIDTH=70
 
@@ -132,8 +132,8 @@ NXT_SYSTEM_EMAIL="admin@${MYDOMAIN}"
 CONFIG_COMPLETED="1"
 
 GIT_LOCAL_FILES_HEAD=$(git rev-parse --short HEAD)
-rm -rf /root/NeXt-Server-Buster/configs/userconfig.cfg
-cat >> /root/NeXt-Server-Buster/configs/userconfig.cfg <<END
+rm -rf /root/Perfectrootserver/configs/userconfig.cfg
+cat >> /root/Perfectrootserver/configs/userconfig.cfg <<END
 #-----------------------------------------------------------#
 ############### Config File from Confighelper ###############
 #-----------------------------------------------------------#
@@ -143,32 +143,19 @@ CONFIG_COMPLETED="${CONFIG_COMPLETED}"
 MYDOMAIN="${MYDOMAIN}"
 USE_MAILSERVER="${USE_MAILSERVER}"
 PHPVERSION7="${PHPVERSION7}"
-IP6ADR="${IPV6ADRINPUT}"
-IPV6GAT="${IPV6GATINPUT}"
-IPV6NET="${IPV6NETINPUT}"
-IPV4_ONLY="${IPV4_ONLY}"
-IP_DUAL="${IP_DUAL}"
-IPV6_ONLY="${IPV6_ONLY}"
 HPKP1="1"
 HPKP2="2"
 
-NXT_SYSTEM_EMAIL="${NXT_SYSTEM_EMAIL}"
-NXT_IS_INSTALLED="0"
-NXT_IS_INSTALLED_MAILSERVER="0"
-NXT_INSTALL_DATE="0"
-NXT_INSTALL_TIME_SECONDS="0"
+SYSTEM_EMAIL="${NXT_SYSTEM_EMAIL}"
+IS_INSTALLED="0"
+IS_INSTALLED_MAILSERVER="0"
+INSTALL_DATE="0"
+INSTALL_TIME_SECONDS="0"
 
-NEXTCLOUD_IS_INSTALLED="0"
-WORDPRESS_IS_INSTALLED="0"
 PMA_IS_INSTALLED="0"
-MUNIN_IS_INSTALLED="0"
-TS3_IS_INSTALLED="0"
 COMPOSER_IS_INSTALLED="0"
 
-NEXTCLOUD_PATH_NAME="0"
-WORDPRESS_PATH_NAME="0"
 PHPMYADMIN_PATH_NAME="0"
-MUNIN_PATH_NAME="0"
 MYSQL_HOSTNAME="localhost"
 TIMEZONE="EMPTY_TIMEZONE"
 
@@ -177,7 +164,7 @@ TIMEZONE="EMPTY_TIMEZONE"
 #-----------------------------------------------------------#
 END
 
-dialog --title "Userconfig" --exit-label "ok" --textbox /root/NeXt-Server-Buster/configs/userconfig.cfg 50 250
+dialog --title "Userconfig" --exit-label "ok" --textbox /root/Perfectrootserver/configs/userconfig.cfg 50 250
 clear
 
 CHOICE_HEIGHT=2
