@@ -3,13 +3,13 @@
 
 menu_options_openssh() {
 
-source /root/NeXt-Server-Buster/configs/sources.cfg
+source /root/Perfectrootserver/configs/sources.cfg
 
 HEIGHT=40
 WIDTH=80
 CHOICE_HEIGHT=5
-BACKTITLE="NeXt Server"
-TITLE="NeXt Server"
+BACKTITLE="Perfectrootserver"
+TITLE="Perfectrootserver"
 MENU="Choose one of the following options:"
 
 OPTIONS=(1 "Add new Openssh User"
@@ -57,7 +57,7 @@ if [[ $INPUT_NEW_SSH_PORT =~ ^-?[0-9]+$ ]]; then
        dialog_msg "Your Input has more than 3 numbers, please try again"
        dialog --clear
     else
-        array=($(cat "/root/NeXt-Server-Buster/configs/blocked_ports.conf"))
+        array=($(cat "/root/Perfectrootserver/configs/blocked_ports.conf"))
         printf -v array_str -- ',,%q' "${array[@]}"
         while true
         do
@@ -70,11 +70,11 @@ if [[ $INPUT_NEW_SSH_PORT =~ ^-?[0-9]+$ ]]; then
                 break
             fi
         done
-        echo "#------------------------------------------------------------------------------#" >> /root/NeXt-Server-Buster/login_information.txt
-        echo "#Date of change $(date +"%d-%m-%Y_%H_%M_%S")" >> /root/NeXt-Server-Buster/login_information.txt
-        echo "#NEW_SSH_PORT: $NEW_SSH_PORT" >> /root/NeXt-Server-Buster/login_information.txt
-        echo "#------------------------------------------------------------------------------#" >> /root/NeXt-Server-Buster/login_information.txt
-        echo "" >> /root/NeXt-Server-Buster/login_information.txt
+        echo "#------------------------------------------------------------------------------#" >> /root/Perfectrootserver/login_information.txt
+        echo "#Date of change $(date +"%d-%m-%Y_%H_%M_%S")" >> /root/Perfectrootserver/login_information.txt
+        echo "#NEW_SSH_PORT: $NEW_SSH_PORT" >> /root/Perfectrootserver/login_information.txt
+        echo "#------------------------------------------------------------------------------#" >> /root/Perfectrootserver/login_information.txt
+        echo "" >> /root/Perfectrootserver/login_information.txt
         systemctl -q restart ssh
         break
     fi
@@ -94,14 +94,14 @@ create_new_openssh_key
 dialog_msg "Finished creating new ssh key"
 echo
 echo
-echo "You can find your New SSH key at /root/NeXt-Server-Buster/ssh_privatekey.txt"
+echo "You can find your New SSH key at /root/Perfectrootserver/ssh_privatekey.txt"
 echo
 echo
 echo "Password for your new ssh key = $NEW_SSH_PASS"
 echo
 echo
 echo "Your new SSH Key"
-cat /root/NeXt-Server-Buster/ssh_privatekey.txt
+cat /root/Perfectrootserver/ssh_privatekey.txt
 continue_or_exit
 menu_options_openssh
 ;;
