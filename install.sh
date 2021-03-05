@@ -1,12 +1,12 @@
 #!/bin/bash
 #Please check the license provided with the script!
 
-source /root/NeXt-Server-Buster/configs/sources.cfg
+source /root/Perfectrootserver/configs/sources.cfg
 
-dev_mode=/root/NeXt-Server-Buster/dev.conf
+dev_mode=/root/Perfectrootserver/dev.conf
 if [ -f "$dev_mode" ]; then
-    sed_replace_word "ec-384" "ec-384 --staging" "/root/NeXt-Server-Buster/script/lets_encrypt.sh"
-    sed_replace_word "4096" "4096 --staging" "/root/NeXt-Server-Buster/script/mailserver.sh"
+    sed_replace_word "ec-384" "ec-384 --staging" "/root/Perfectrootserver/script/lets_encrypt.sh"
+    sed_replace_word "4096" "4096 --staging" "/root/Perfectrootserver/script/mailserver.sh"
     set -x
 fi
 
@@ -20,7 +20,7 @@ check_system_before_start
 
 confighelper_userconfig
 
-mkdir /root/NeXt-Server-Buster/sources
+mkdir /root/Perfectrootserver/sources
 progress_gauge "0" "Installing System..."
 install_system
 
@@ -69,13 +69,13 @@ install_end=`date +%s`
 runtime=$((install_end-install_start))
 
 if [[ ${USE_MAILSERVER} = "1" ]]; then
-    sed -i 's/NXT_IS_INSTALLED_MAILSERVER="0"/NXT_IS_INSTALLED_MAILSERVER="1"/' /root/NeXt-Server-Buster/configs/userconfig.cfg
+    sed -i 's/IS_INSTALLED_MAILSERVER="0"/IS_INSTALLED_MAILSERVER="1"/' /root/Perfectrootserver/configs/userconfig.cfg
 else
-    sed -i 's/NXT_IS_INSTALLED="0"/NXT_IS_INSTALLED="1"/' /root/NeXt-Server-Buster/configs/userconfig.cfg
+    sed -i 's/IS_INSTALLED="0"/IS_INSTALLED="1"/' /root/Perfectrootserver/configs/userconfig.cfg
 fi
 
 date=$(date +"%d-%m-%Y")
-sed -i 's/NXT_INSTALL_DATE="0"/NXT_INSTALL_DATE="'${date}'"/' /root/NeXt-Server-Buster/configs/userconfig.cfg
-sed -i 's/NXT_INSTALL_TIME_SECONDS="0"/NXT_INSTALL_TIME_SECONDS="'${runtime}'"/' /root/NeXt-Server-Buster/configs/userconfig.cfg
+sed -i 's/INSTALL_DATE="0"/INSTALL_DATE="'${date}'"/' /root/Perfectrootserver/configs/userconfig.cfg
+sed -i 's/INSTALL_TIME_SECONDS="0"/INSTALL_TIME_SECONDS="'${runtime}'"/' /root/Perfectrootserver/configs/userconfig.cfg
 
 start_after_install
