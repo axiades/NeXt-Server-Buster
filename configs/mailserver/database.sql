@@ -27,7 +27,7 @@ CREATE TABLE `accounts` (
 
 CREATE TABLE `aliases` (
     `id` int unsigned NOT NULL AUTO_INCREMENT,
-    `source_username` varchar(64) NOT NULL,
+    `source_username` varchar(64),
     `source_domain` varchar(255) NOT NULL,
     `destination_username` varchar(64) NOT NULL,
     `destination_domain` varchar(255) NOT NULL,
