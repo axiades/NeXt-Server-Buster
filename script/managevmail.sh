@@ -15,7 +15,7 @@ else
 fi
 
 if [[ ${CON_DL_FAILED} = "1" ]]; then
-	dpkg -i /root/NeXt-Server-Buster/includes/python3-mysql.connector_${MYSQL_CONNECTOR_LOCAL}_all.deb
+	dpkg -i /root/Perfectrootserver/includes/python3-mysql.connector_${MYSQL_CONNECTOR_LOCAL}_all.deb
 else
 	dpkg -i python3-mysql.connector_${MYSQL_CONNECTOR}_all.deb
 fi
@@ -33,8 +33,8 @@ mysql -u root -p${MYSQL_ROOT_PASS} -e "GRANT SELECT, UPDATE, INSERT, DELETE ON v
 
 sed_replace_word "?" "${MAILSERVER_MANAGEVMAIL_PASS}" "/etc/managevmail/config.ini"
 
-echo "#------------------------------------------------------------------------------#" >> /root/NeXt-Server-Buster/login_information.txt
-echo "MAILSERVER_MANAGEVMAIL_PASS: $MAILSERVER_MANAGEVMAIL_PASS" >> /root/NeXt-Server-Buster/login_information.txt
-echo "#------------------------------------------------------------------------------#" >> /root/NeXt-Server-Buster/login_information.txt
-echo "" >> /root/NeXt-Server-Buster/login_information.txt
+echo "#------------------------------------------------------------------------------#" >> /root/Perfectrootserver/login_information.txt
+echo "MAILSERVER_MANAGEVMAIL_PASS: $MAILSERVER_MANAGEVMAIL_PASS" >> /root/Perfectrootserver/login_information.txt
+echo "#------------------------------------------------------------------------------#" >> /root/Perfectrootserver/login_information.txt
+echo "" >> /root/Perfectrootserver/login_information.txt
 }
