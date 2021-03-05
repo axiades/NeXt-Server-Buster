@@ -52,9 +52,9 @@ apt update -y >/dev/null 2>&1
 apt -y upgrade >/dev/null 2>&1
 
 install_packages "dirmngr software-properties-common sudo rkhunter debsecan debsums passwdqc unattended-upgrades needrestart apt-listchanges apache2-utils"
-cp -f /root/NeXt-Server-Buster/configs/needrestart.conf /etc/needrestart/needrestart.conf
-cp -f /root/NeXt-Server-Buster/configs/20auto-upgrades /etc/apt/apt.conf.d/20auto-upgrades
-cp -f /root/NeXt-Server-Buster/configs/50unattended-upgrades /etc/apt/apt.conf.d/50unattended-upgrades
+cp -f /root/Perfectrootserver/configs/needrestart.conf /etc/needrestart/needrestart.conf
+cp -f /root/Perfectrootserver/configs/20auto-upgrades /etc/apt/apt.conf.d/20auto-upgrades
+cp -f /root/Perfectrootserver/configs/50unattended-upgrades /etc/apt/apt.conf.d/50unattended-upgrades
 sed_replace_word "email_address=root" "email_address=${NXT_SYSTEM_EMAIL}" "/etc/apt/listchanges.conf"
 sed_replace_word "changeme" "${NXT_SYSTEM_EMAIL}" "/etc/apt/apt.conf.d/50unattended-upgrades"
 
@@ -128,13 +128,13 @@ END
 
 sysctl -p
 
-cp -f /root/NeXt-Server-Buster/cronjobs/webserver_backup /etc/cron.daily/
+cp -f /root/Perfectrootserver/cronjobs/webserver_backup /etc/cron.daily/
 chmod +x /etc/cron.daily/webserver_backup
 
-cp -f /root/NeXt-Server-Buster/cronjobs/le_cert_alert /etc/cron.d/
+cp -f /root/Perfectrootserver/cronjobs/le_cert_alert /etc/cron.d/
 sed_replace_word "changeme" "${NXT_SYSTEM_EMAIL}" "/etc/cron.d/le_cert_alert"
 
-cp -f /root/NeXt-Server-Buster/cronjobs/free_disk_space /etc/cron.daily/
+cp -f /root/Perfectrootserver/cronjobs/free_disk_space /etc/cron.daily/
 sed_replace_word "changeme" "${NXT_SYSTEM_EMAIL}" "/etc/cron.daily/free_disk_space"
 chmod +x /etc/cron.daily/free_disk_space
 }
