@@ -5,7 +5,7 @@ install_system() {
 
 trap error_exit ERR
 
-source /root/NeXt-Server-Buster/configs/sources.cfg
+source /root/Perfectrootserver/configs/sources.cfg
 
 hostnamectl set-hostname --static mail
 
