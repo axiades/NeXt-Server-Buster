@@ -28,7 +28,7 @@ Login with:
 otherwise the script will throw multiple errors!
 
 Install with [git]:
-- `cd /root/; apt update; apt install git -y; git clone https://github.com/axiades/Perfectrootserver; cd Perfectrootserver; bash nxt.sh
+- `cd /root/; apt update; apt install git -y; git clone https://github.com/axiades/Perfectrootserver; cd Perfectrootserver; bash prs.sh
 `
 
 Install dev mode [git]:
@@ -37,7 +37,7 @@ DO NOT USE FOR PRODUCTION!
 
 The Mailserver and other features won't work!
 (This will create a fake Let's Encrypt Cert, you won't run into the limition of weekly cert's)
-- `cd /root/; apt update; apt install git -y; git clone https://github.com/axiades/Perfectrootserver; cd Perfectrootserver; touch dev.conf; bash nxt.sh`
+- `cd /root/; apt update; apt install git -y; git clone https://github.com/axiades/Perfectrootserver; cd Perfectrootserver; touch dev.conf; bash prs.sh`
 
 ## Copyright and license
 
