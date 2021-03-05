@@ -3,14 +3,14 @@
 
 menu_options_services() {
 
-source /root/NeXt-Server-Buster/configs/sources.cfg
+source /root/Perfectrootserver/configs/sources.cfg
 set_logs
 
 HEIGHT=40
 WIDTH=80
 CHOICE_HEIGHT=5
-BACKTITLE="NeXt Server"
-TITLE="NeXt Server"
+BACKTITLE="Perfectrootserver"
+TITLE="Perfectrootserver"
 MENU="Choose one of the following options:"
 
 OPTIONS=(1 "Mailserver Options"
@@ -45,7 +45,7 @@ menu_options_firewall
 ;;
 
 4)
-bash /root/NeXt-Server-Buster/nxt.sh
+bash /root/Perfectrootserver/prs.sh
 ;;
 
 5)
