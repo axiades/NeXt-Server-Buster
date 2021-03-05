@@ -9,9 +9,9 @@ if [ $(dpkg-query -l | grep ipset | wc -l) -ne 1 ]; then
    install_packages "ipset"
 fi
 
-git clone https://github.com/arno-iptables-firewall/aif.git /root/NeXt-Server-Buster/sources/aif -q
+git clone https://github.com/arno-iptables-firewall/aif.git /root/Perfectrootserver/sources/aif -q
 
-cd /root/NeXt-Server-Buster/sources/aif
+cd /root/Perfectrootserver/sources/aif
 
 mkdir -p /usr/local/share/arno-iptables-firewall/plugins
 mkdir -p /usr/local/share/man/{man1,man8}
@@ -67,7 +67,7 @@ systemctl -q start arno-iptables-firewall.service
 #Fix error with /etc/rc.local
 touch /etc/rc.local
 
-mkdir -p /root/NeXt-Server-Buster/sources/blacklist
+mkdir -p /root/Perfectrootserver/sources/blacklist
 mkdir -p /etc/arno-iptables-firewall/blocklists
 
 cat > /etc/cron.daily/blocked-hosts <<END
