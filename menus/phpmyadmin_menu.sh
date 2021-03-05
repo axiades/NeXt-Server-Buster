@@ -3,14 +3,14 @@
 
 menu_options_phpmyadmin() {
 
-source /root/NeXt-Server-Buster/configs/sources.cfg
+source /root/Perfectrootserver/configs/sources.cfg
 get_domain
 
 HEIGHT=40
 WIDTH=80
 CHOICE_HEIGHT=3
-BACKTITLE="NeXt Server"
-TITLE="NeXt Server"
+BACKTITLE="Perfectrootserver"
+TITLE="Perfectrootserver"
 MENU="In which path do you want to install Phpmyadmin?"
 OPTIONS=(1 "${MYDOMAIN}/pma"
          2 "${MYDOMAIN}/phpmyadmin"
@@ -21,12 +21,12 @@ clear
 case $CHOICE in
 1)
 PHPMYADMIN_PATH_NAME="pma"
-sed_replace_word "PHPMYADMIN_PATH_NAME=\"0"\" "PHPMYADMIN_PATH_NAME=\"${PHPMYADMIN_PATH_NAME}"\" "/root/NeXt-Server-Buster/configs/userconfig.cfg"
+sed_replace_word "PHPMYADMIN_PATH_NAME=\"0"\" "PHPMYADMIN_PATH_NAME=\"${PHPMYADMIN_PATH_NAME}"\" "/root/Perfectrootserver/configs/userconfig.cfg"
 ;;
 
 2)
 PHPMYADMIN_PATH_NAME="phpmyadmin"
-sed_replace_word "PHPMYADMIN_PATH_NAME=\"0"\" "PHPMYADMIN_PATH_NAME=\"${PHPMYADMIN_PATH_NAME}"\" "/root/NeXt-Server-Buster/configs/userconfig.cfg"
+sed_replace_word "PHPMYADMIN_PATH_NAME=\"0"\" "PHPMYADMIN_PATH_NAME=\"${PHPMYADMIN_PATH_NAME}"\" "/root/Perfectrootserver/configs/userconfig.cfg"
 ;;
 
 3)
@@ -41,13 +41,13 @@ PHPMYADMIN_PATH_NAME=$(dialog --clear \
                               )
 if [[ "$PHPMYADMIN_PATH_NAME" =~ ^[a-zA-Z0-9]+$ ]]; then
     if [ ${#PHPMYADMIN_PATH_NAME} -ge 2 ]; then
-       array=($(cat "/root/NeXt-Server-Buster/configs/blocked_paths.conf"))
+       array=($(cat "/root/Perfectrootserver/configs/blocked_paths.conf"))
        printf -v array_str -- ',,%q' "${array[@]}"
        if [[ "${array_str},," =~ ,,${PHPMYADMIN_PATH_NAME},, ]]; then
            dialog_msg "[ERROR] Your Phpmyadmin path ${PHPMYADMIN_PATH_NAME} is already used by the script, please choose another one!"
            dialog --clear
        else
-           sed_replace_word "PHPMYADMIN_PATH_NAME=\"0"\" "PHPMYADMIN_PATH_NAME=\"${PHPMYADMIN_PATH_NAME}"\" "/root/NeXt-Server-Buster/configs/userconfig.cfg"
+           sed_replace_word "PHPMYADMIN_PATH_NAME=\"0"\" "PHPMYADMIN_PATH_NAME=\"${PHPMYADMIN_PATH_NAME}"\" "/root/Perfectrootserver/configs/userconfig.cfg"
            break
        fi
     else
