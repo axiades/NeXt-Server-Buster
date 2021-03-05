@@ -7,7 +7,7 @@ trap error_exit ERR
 
 install_packages "libssl-dev libtool zlib1g-dev libpcre3-dev libxslt1-dev libxml2-dev libgd-dev libgeoip-dev libgoogle-perftools-dev libperl-dev"
 
-cd /root/NeXt-Server-Buster/sources
+cd /root/Perfectrootserver/sources
 wget_tar "https://www.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz"
 tar_file "openssl-${OPENSSL_VERSION}.tar.gz"
 cd openssl-${OPENSSL_VERSION}
