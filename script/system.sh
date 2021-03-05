@@ -25,7 +25,7 @@ echo $(hostname -f) > /etc/mailname
 TIMEZONE_DETECTED=$(wget http://ip-api.com/line/${IPADR}?fields=timezone -q -O -)
 timedatectl set-timezone ${TIMEZONE_DETECTED}
 
-sed_replace_word "EMPTY_TIMEZONE" "${TIMEZONE_DETECTED}" "/root/NeXt-Server-Buster/configs/userconfig.cfg"
+sed_replace_word "EMPTY_TIMEZONE" "${TIMEZONE_DETECTED}" "/root/Perfectrootserver/configs/userconfig.cfg"
 
 rm /etc/apt/sources.list
 cat > /etc/apt/sources.list <<END
