@@ -1,6 +1,5 @@
 server {
-    listen IPADR:443 ssl http2;
-    #listen [IP6ADR]:443 ssl http2;
+    listen *:443 ssl http2;
 
     server_name MYDOMAIN;
     set $base /var/www/MYDOMAIN;
@@ -34,16 +33,11 @@ server {
     include _general.conf;
     include _pagespeed.conf;
     #include _rspamd.conf;
-    #include _wordpress.conf;
-    #include _nextcloud.conf;
-    #include _phpmyadmin.conf;
-    #include _munin.conf;
 }
 
 # subdomains redirect
 server {
-    listen IPADR:443 ssl http2;
-    #listen [IP6ADR]:443 ssl http2;
+    listen *:443 ssl http2;
 
     server_name *.MYDOMAIN;
 
@@ -56,8 +50,7 @@ server {
 
 # HTTP redirect
 server {
-    listen IPADR:80;
-    #listen [IP6ADR]:80;
+    listen *:80;
 
     server_name .MYDOMAIN;
 
