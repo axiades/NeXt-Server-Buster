@@ -3,13 +3,13 @@
 
 menu_options_after_install() {
 
-source /root/NeXt-Server-Buster/configs/sources.cfg
+source /root/Perfectrootserver/configs/sources.cfg
 
 HEIGHT=40
 WIDTH=80
 CHOICE_HEIGHT=6
-BACKTITLE="NeXt Server"
-TITLE="NeXt Server"
+BACKTITLE="Perfectrootserver"
+TITLE="Perfectrootserver"
 MENU="Choose one of the following options:"
 
 OPTIONS=(1 "Full after installation configuration"
@@ -48,7 +48,7 @@ case $CHOICE in
 ;;
 
 5)
-  bash /root/NeXt-Server-Buster/nxt.sh
+  bash /root/Perfectrootserver/prs.sh
 ;;
 
 6)
