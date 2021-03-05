@@ -30,7 +30,7 @@ mysql -u${ROUNDCUBE_USER} -p${ROUNDCUBE_DB_PASS} -h${MYSQL_HOSTNAME} ${ROUNDCUBE
 
 htpasswd -b /etc/nginx/htpasswd/.htpasswd ${ROUND_HTTPAUTH_USER} ${ROUND_HTTPAUTH_PASS}
 
-cp /root/NeXt-Server-Buster/configs/roundcube/config.inc.php /var/www/${MYDOMAIN}/public/webmail/config/config.inc.php
+cp /root/Perfectrootserver/configs/roundcube/config.inc.php /var/www/${MYDOMAIN}/public/webmail/config/config.inc.php
 sed_replace_word "rcdbuser" "${ROUNDCUBE_USER}" "/var/www/${MYDOMAIN}/public/webmail/config/config.inc.php"
 sed_replace_word "rcdbpassword" "${ROUNDCUBE_DB_PASS}" "/var/www/${MYDOMAIN}/public/webmail/config/config.inc.php"
 sed_replace_word "rcdbname" "${ROUNDCUBE_DB_NAME}" "/var/www/${MYDOMAIN}/public/webmail/config/config.inc.php"
@@ -38,21 +38,21 @@ sed_replace_word "deskey" "${RANDOM_DESKEY}" "/var/www/${MYDOMAIN}/public/webmai
 
 sudo rm -rf /var/www/nxtsrv.de/public/webmail/installer/
 
-echo "#------------------------------------------------------------------------------#" >> /root/NeXt-Server-Buster/login_information.txt
-echo "Roundcube Webmail URL: https://${MYDOMAIN}/webmail/" >> /root/NeXt-Server-Buster/login_information.txt
-echo "#------------------------------------------------------------------------------#" >> /root/NeXt-Server-Buster/login_information.txt
-echo "#------------------------------------------------------------------------------#" >> /root/NeXt-Server-Buster/login_information.txt
-echo "ROUND_HTTPAUTH_USER = ${ROUND_HTTPAUTH_USER}" >> /root/NeXt-Server-Buster/login_information.txt
-echo "ROUND_HTTPAUTH_PASS = ${ROUND_HTTPAUTH_PASS}" >> /root/NeXt-Server-Buster/login_information.txt
-echo "ROUNDCUBEDBUser = ${ROUNDCUBE_USER}" >> /root/NeXt-Server-Buster/login_information.txt
-echo "ROUNDCUBEDBName = ${ROUNDCUBE_DB_NAME}" >> /root/NeXt-Server-Buster/login_information.txt
-echo "ROUNDCUBEDBPassword = ${ROUNDCUBE_DB_PASS}" >> /root/NeXt-Server-Buster/login_information.txt
-echo "DES_KEY = ${RANDOM_DESKEY}" >> /root/NeXt-Server-Buster/login_information.txt
-echo "Disable the http auth?" >> /root/NeXt-Server-Buster/login_information.txt
-echo "Open /etc/nginx/sites-available/${MYDOMAIN}.conf and delete the lines:" >> /root/NeXt-Server-Buster/login_information.txt
-echo "location /webmail/ {" >> /root/NeXt-Server-Buster/login_information.txt
-echo 'auth_basic "Restricted";' >> /root/NeXt-Server-Buster/login_information.txt
-echo "}" >> /root/NeXt-Server-Buster/login_information.txt
-echo "#------------------------------------------------------------------------------#" >> /root/NeXt-Server-Buster/login_information.txt
-echo "" >> /root/NeXt-Server-Buster/login_information.txt
+echo "#------------------------------------------------------------------------------#" >> /root/Perfectrootserver/login_information.txt
+echo "Roundcube Webmail URL: https://${MYDOMAIN}/webmail/" >> /root/Perfectrootserver/login_information.txt
+echo "#------------------------------------------------------------------------------#" >> /root/Perfectrootserver/login_information.txt
+echo "#------------------------------------------------------------------------------#" >> /root/Perfectrootserver/login_information.txt
+echo "ROUND_HTTPAUTH_USER = ${ROUND_HTTPAUTH_USER}" >> /root/Perfectrootserver/login_information.txt
+echo "ROUND_HTTPAUTH_PASS = ${ROUND_HTTPAUTH_PASS}" >> /root/Perfectrootserver/login_information.txt
+echo "ROUNDCUBEDBUser = ${ROUNDCUBE_USER}" >> /root/Perfectrootserver/login_information.txt
+echo "ROUNDCUBEDBName = ${ROUNDCUBE_DB_NAME}" >> /root/Perfectrootserver/login_information.txt
+echo "ROUNDCUBEDBPassword = ${ROUNDCUBE_DB_PASS}" >> /root/Perfectrootserver/login_information.txt
+echo "DES_KEY = ${RANDOM_DESKEY}" >> /root/Perfectrootserver/login_information.txt
+echo "Disable the http auth?" >> /root/Perfectrootserver/login_information.txt
+echo "Open /etc/nginx/sites-available/${MYDOMAIN}.conf and delete the lines:" >> /root/Perfectrootserver/login_information.txt
+echo "location /webmail/ {" >> /root/Perfectrootserver/login_information.txt
+echo 'auth_basic "Restricted";' >> /root/Perfectrootserver/login_information.txt
+echo "}" >> /root/Perfectrootserver/login_information.txt
+echo "#------------------------------------------------------------------------------#" >> /root/Perfectrootserver/login_information.txt
+echo "" >> /root/Perfectrootserver/login_information.txt
 }
