@@ -5,7 +5,7 @@ start_after_install() {
 
   trap error_exit ERR
 
-  source /root/NeXt-Server-Buster/configs/sources.cfg
+  source /root/Perfectrootserver/configs/sources.cfg
 
   check_nginx && continue_or_exit
   check_php && continue_or_exit
@@ -22,7 +22,7 @@ start_after_install() {
   show_ssh_key && continue_or_exit
 
   dialog_msg "Please save the shown login information on next page"
-  cat /root/NeXt-Server-Buster/login_information.txt && continue_or_exit
+  cat /root/Perfectrootserver/login_information.txt && continue_or_exit
 
   create_private_key
 
@@ -30,7 +30,7 @@ start_after_install() {
     dialog_msg "Please enter the shown DKIM key on next page to you DNS settings \n\n
     remove all quote signs - so it looks like that:  \n\n
     v=DKIM1; k=rsa; p=MIIBIjANBgkqh[...] "
-    cat /root/NeXt-Server-Buster/DKIM_KEY_ADD_TO_DNS.txt
+    cat /root/Perfectrootserver/DKIM_KEY_ADD_TO_DNS.txt
     continue_or_exit
   fi
 
