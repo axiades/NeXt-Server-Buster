@@ -70,7 +70,7 @@ else
   echo "${error} ${CURRENT_YEAR}.txt does NOT exist" >>"${failed_checks_log}"
 fi
 
-if [ -e /root/NeXt-Server-Buster/DKIM_KEY_ADD_TO_DNS.txt ]; then
+if [ -e /root/Perfectrootserver/DKIM_KEY_ADD_TO_DNS.txt ]; then
   passed_rspamd_checks=$((passed_rspamd_checks + 1))
 else
   failed_rspamd_checks=$((failed_rspamd_checks + 1))
@@ -102,7 +102,7 @@ echo "Rspamd:"
 echo "${ok} ${passed_rspamd_checks} checks passed!"
 
 if [[ "${failed_rspamd_checks}" != "0" ]]; then
-  echo "${error} ${failed_rspamd_checks} check/s failed! Please check /root/NeXt-Server-Buster/logs/failed_checks.log or consider a new installation!"
+  echo "${error} ${failed_rspamd_checks} check/s failed! Please check failed_checks.log or consider a new installation!"
 fi
 
 check_service "rspamd"
