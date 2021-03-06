@@ -127,7 +127,7 @@ You can change your choice at the end of the confighelper, if you select no rest
 ;;
 esac
 
-PHPVERSION7="7.3"
+PHPVERSION7="7.4"
 NXT_SYSTEM_EMAIL="admin@${MYDOMAIN}"
 CONFIG_COMPLETED="1"
 
