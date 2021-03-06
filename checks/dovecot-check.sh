@@ -45,7 +45,7 @@ echo "Dovecot:"
 echo "${ok} ${passed_dovecot_checks} checks passed!"
 
 if [[ "${failed_dovecot_checks}" != "0" ]]; then
-  echo "${error} ${failed_dovecot_checks} check/s failed! Please check /root/NeXt-Server-Buster/logs/failed_checks.log or consider a new installation!"
+  echo "${error} ${failed_dovecot_checks} check/s failed! Please check failed_checks.log or consider a new installation!"
 fi
 
 check_service "dovecot"
