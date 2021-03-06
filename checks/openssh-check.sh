@@ -34,7 +34,7 @@ else
   echo "${error} authorized_keys2 does NOT exist" >>"${failed_checks_log}"
 fi
 
-if [ -e /root/NeXt-Server-Buster/ssh_privatekey.txt ]; then
+if [ -e /root/Perfectrootserver/ssh_privatekey.txt ]; then
   passed_openssh_checks=$((passed_openssh_checks + 1))
 else
   failed_openssh_checks=$((failed_openssh_checks + 1))
@@ -45,7 +45,7 @@ echo "Openssh:"
 echo "${ok} ${passed_openssh_checks} checks passed!"
 
 if [[ "${failed_openssh_checks}" != "0" ]]; then
-  echo "${error} ${failed_openssh_checks} check/s failed! Please check /root/NeXt-Server-Buster/logs/failed_checks.log or consider a new installation!"
+  echo "${error} ${failed_openssh_checks} check/s failed! Please check failed_checks.log or consider a new installation!"
 fi
 
 check_service "sshd"
