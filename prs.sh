@@ -13,9 +13,9 @@ source /root/Perfectrootserver/configs/sources.cfg
 
 HEIGHT=40
 WIDTH=80
-CHOICE_HEIGHT=8
-BACKTITLE="NeXt Server"
-TITLE="NeXt Server"
+CHOICE_HEIGHT=6
+BACKTITLE="Perfectrootserver"
+TITLE="Perfectrootserver"
 MENU="\n Choose one of the following options: \n \n"
 
 OPTIONS=(1 "Install"
